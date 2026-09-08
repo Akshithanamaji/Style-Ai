@@ -1,0 +1,28 @@
+- generic [ref=e3]:
+  - generic [ref=e35]:
+    - banner [ref=e36]:
+      - generic [ref=e37]: ✨
+      - generic [ref=e38]: AI Fashion Stylist
+      - generic [ref=e39]: Step 1 of 5 — Upload Photo
+    - main [ref=e40]:
+      - heading "Let's start with your photo" [level=1] [ref=e41]
+      - paragraph [ref=e42]: Face detection runs entirely in your browser — your photo is never uploaded at this stage.
+      - generic [ref=e56]:
+        - generic [ref=e57] [cursor=pointer]:
+          - generic [ref=e58]: 📁
+          - paragraph [ref=e59]: Click to upload a photo
+          - paragraph [ref=e60]: JPG, PNG, WEBP — max 10 MB
+          - paragraph [ref=e61]: Face detection model ready
+        - generic [ref=e62]: or
+        - button "📷 Use Camera" [ref=e66] [cursor=pointer]:
+          - generic [ref=e67]: 📷
+          - text: Use Camera
+        - generic [ref=e68]:
+          - strong [ref=e69]: "Oops:"
+          - text: No face detected. Please try a clearer photo with your face visible and well-lit.
+      - generic [ref=e73]:
+        - generic [ref=e74]:
+          - strong [ref=e75]: No face detected.
+          - text: No face detected. Please try a clearer photo with your face visible and well-lit.
+        - button "Try Again" [ref=e76] [cursor=pointer]
+  - button "💬" [ref=e55] [cursor=pointer]

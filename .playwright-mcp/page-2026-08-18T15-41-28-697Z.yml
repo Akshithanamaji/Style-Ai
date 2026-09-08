@@ -1,0 +1,59 @@
+- generic [ref=e3]:
+  - generic [ref=e4]:
+    - banner [ref=e5]:
+      - generic [ref=e6]: ✨
+      - generic [ref=e7]: AI Fashion Stylist
+      - generic [ref=e8]: Step 5 of 5 — Your Complete Style Report
+    - main [ref=e10]:
+      - generic [ref=e11]:
+        - heading "Your Style Profile" [level=2] [ref=e12]
+        - generic [ref=e13]:
+          - generic [ref=e14]:
+            - generic [ref=e15]: 👩
+            - generic [ref=e16]:
+              - paragraph [ref=e17]: Person
+              - paragraph [ref=e18]: adult woman
+          - generic [ref=e19]:
+            - generic [ref=e20]: ⌛
+            - generic [ref=e21]:
+              - paragraph [ref=e22]: Body Type
+              - paragraph [ref=e23]: hourglass
+          - generic [ref=e24]:
+            - generic [ref=e25]: 🥚
+            - generic [ref=e26]:
+              - paragraph [ref=e27]: Face Shape
+              - paragraph [ref=e28]: oval
+          - generic [ref=e29]:
+            - generic [ref=e30]: 🍂
+            - generic [ref=e31]:
+              - paragraph [ref=e32]: Color Season
+              - paragraph [ref=e33]: Autumn
+          - generic [ref=e36]:
+            - paragraph [ref=e37]: Undertone
+            - paragraph [ref=e38]: warm · medium
+      - generic [ref=e39]:
+        - heading "Choose Occasion" [level=2] [ref=e40]
+        - generic [ref=e41]:
+          - button "☀️ Daily Wear" [ref=e42] [cursor=pointer]:
+            - generic [ref=e43]: ☀️
+            - generic [ref=e44]: Daily Wear
+          - button "💼 Office" [ref=e45] [cursor=pointer]:
+            - generic [ref=e46]: 💼
+            - generic [ref=e47]: Office
+          - button "🎓 College" [ref=e48] [cursor=pointer]:
+            - generic [ref=e49]: 🎓
+            - generic [ref=e50]: College
+          - button "🎉 Party" [ref=e51] [cursor=pointer]:
+            - generic [ref=e52]: 🎉
+            - generic [ref=e53]: Party
+          - button "💒 Wedding" [ref=e54] [cursor=pointer]:
+            - generic [ref=e55]: 💒
+            - generic [ref=e56]: Wedding
+          - button "🪔 Festive" [ref=e57] [cursor=pointer]:
+            - generic [ref=e58]: 🪔
+            - generic [ref=e59]: Festive
+          - button "🎩 Formal" [ref=e60] [cursor=pointer]:
+            - generic [ref=e61]: 🎩
+            - generic [ref=e62]: Formal
+      - generic [ref=e63]: Loading outfit recommendations…
+  - button "💬" [ref=e65] [cursor=pointer]

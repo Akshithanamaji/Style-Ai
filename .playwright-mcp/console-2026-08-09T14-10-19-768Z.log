@@ -1,0 +1,8 @@
+[   49860ms] [WARNING] W0809 14:11:09.627000 2196592 face_landmarker_graph.cc:180] Sets FaceBlendshapesGraph acceleration to xnnpack by default. @ http://127.0.0.1:8000/mediapipe-wasm/vision_wasm_internal.js:8362
+[   49908ms] [LOG] I0809 14:11:09.676000 2196592 gl_context.cc:407] GL version: 3.0 (OpenGL ES 3.0 (WebGL 2.0 (OpenGL ES 3.0 Chromium))), renderer: WebKit WebGL @ http://127.0.0.1:8000/mediapipe-wasm/vision_wasm_internal.js:4659
+[   49909ms] [WARNING] W0809 14:11:09.676999 2196592 gl_context.cc:1119] OpenGL error checking is disabled @ http://127.0.0.1:8000/mediapipe-wasm/vision_wasm_internal.js:8362
+[   49912ms] [LOG] Graph successfully started running. @ http://127.0.0.1:8000/mediapipe-wasm/vision_wasm_internal.js:1359
+[  125809ms] [ERROR] INFO: Created TensorFlow Lite XNNPACK delegate for CPU. @ http://127.0.0.1:8000/mediapipe-wasm/vision_wasm_internal.js:1392
+[  125828ms] [WARNING] W0809 14:12:25.595000 2196592 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors. @ http://127.0.0.1:8000/mediapipe-wasm/vision_wasm_internal.js:8362
+[  125852ms] [WARNING] W0809 14:12:25.619000 2196592 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors. @ http://127.0.0.1:8000/mediapipe-wasm/vision_wasm_internal.js:8362
+[  267688ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://127.0.0.1:8000/api/recommend:0

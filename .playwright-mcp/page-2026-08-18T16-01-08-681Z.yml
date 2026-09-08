@@ -1,0 +1,215 @@
+- generic [ref=f2e3]:
+  - generic [ref=f2e4]:
+    - banner [ref=f2e5]:
+      - generic [ref=f2e6]: ✨
+      - generic [ref=f2e7]: AI Fashion Stylist
+      - generic [ref=f2e8]: Step 5 of 5 — Your Complete Style Report
+    - main [ref=f2e10]:
+      - generic [ref=f2e11]:
+        - heading "Your Style Profile" [level=2] [ref=f2e12]
+        - generic [ref=f2e13]:
+          - generic [ref=f2e14]:
+            - generic [ref=f2e15]: 👩
+            - generic [ref=f2e16]:
+              - paragraph [ref=f2e17]: Person
+              - paragraph [ref=f2e18]: adult woman
+          - generic [ref=f2e19]:
+            - generic [ref=f2e20]: ⌛
+            - generic [ref=f2e21]:
+              - paragraph [ref=f2e22]: Body Type
+              - paragraph [ref=f2e23]: hourglass
+          - generic [ref=f2e24]:
+            - generic [ref=f2e25]: 🥚
+            - generic [ref=f2e26]:
+              - paragraph [ref=f2e27]: Face Shape
+              - paragraph [ref=f2e28]: oval
+          - generic [ref=f2e29]:
+            - generic [ref=f2e30]: 🍂
+            - generic [ref=f2e31]:
+              - paragraph [ref=f2e32]: Color Season
+              - paragraph [ref=f2e33]: Autumn
+          - generic [ref=f2e36]:
+            - paragraph [ref=f2e37]: Undertone
+            - paragraph [ref=f2e38]: warm · medium
+      - generic [ref=f2e66]:
+        - generic [ref=f2e67]:
+          - generic [ref=f2e68]: ⌛
+          - generic [ref=f2e69]:
+            - heading "Hourglass Body Type" [level=2] [ref=f2e70]
+            - paragraph [ref=f2e71]: Balanced shoulders and hips with a defined, narrower waist
+        - generic [ref=f2e72]:
+          - generic [ref=f2e73]:
+            - heading "✅ Best Silhouettes" [level=3] [ref=f2e74]
+            - generic [ref=f2e75]:
+              - generic [ref=f2e76]: Wrap Dress
+              - generic [ref=f2e77]: Bodycon
+              - generic [ref=f2e78]: Fit & Flare
+              - generic [ref=f2e79]: A-Line
+              - generic [ref=f2e80]: Pencil Dress
+          - generic [ref=f2e81]:
+            - heading "👗 Best Styles" [level=3] [ref=f2e82]
+            - generic [ref=f2e83]:
+              - generic [ref=f2e84]: V-neck
+              - generic [ref=f2e85]: Sweetheart
+              - generic [ref=f2e86]: Scoop neck
+          - generic [ref=f2e87]:
+            - heading "❌ Avoid" [level=3] [ref=f2e88]
+            - generic [ref=f2e89]:
+              - generic [ref=f2e90]: Boxy oversized shapes
+              - generic [ref=f2e91]: Shapeless tunics that hide the waist
+          - paragraph [ref=f2e94]:
+            - text: 💡
+            - strong [ref=f2e95]: "Stylist Tip:"
+            - text: Highlight your natural waist with belted styles and wrap dresses. Your balanced proportions suit most silhouettes beautifully.
+      - generic [ref=f2e96]:
+        - generic [ref=f2e97]:
+          - generic [ref=f2e98]: 🍂
+          - heading "Autumn Color Palette" [level=2] [ref=f2e99]
+        - paragraph [ref=f2e100]: Warm, deep, and muted. Warm golden/olive undertone with medium-to-deep depth.
+        - generic [ref=f2e101]:
+          - generic [ref=f2e102]:
+            - paragraph [ref=f2e103]: "Your best colors:"
+            - generic [ref=f2e104]:
+              - generic "Saddle Brown" [ref=f2e105]: "#8B4513"
+              - generic "Sienna" [ref=f2e109]: "#A0522D"
+              - generic "Chocolate" [ref=f2e113]: "#D2691E"
+              - generic "Dark Olive Green" [ref=f2e117]: "#556B2F"
+              - generic "Olive Drab" [ref=f2e121]: "#6B8E23"
+              - generic "Dark Goldenrod" [ref=f2e125]: "#B8860B"
+              - generic "Peru" [ref=f2e129]: "#CD853F"
+              - generic "Olive" [ref=f2e133]: "#808000"
+              - generic "Maroon" [ref=f2e137]: "#800000"
+              - generic "Sea Green" [ref=f2e141]: "#2E8B57"
+          - generic [ref=f2e145]:
+            - paragraph [ref=f2e146]: "Colors to avoid:"
+            - generic [ref=f2e147]:
+              - generic [ref=f2e148]: ✕
+              - generic [ref=f2e151]: ✕
+              - generic [ref=f2e154]: ✕
+              - generic [ref=f2e157]: ✕
+              - generic [ref=f2e160]: ✕
+            - paragraph [ref=f2e163]:
+              - text: "Best metals:"
+              - strong [ref=f2e164]: 🥇 Gold
+      - generic [ref=f2e39]:
+        - heading "Choose Occasion" [level=2] [ref=f2e40]
+        - generic [ref=f2e41]:
+          - button "☀️ Daily Wear" [ref=f2e42] [cursor=pointer]:
+            - generic [ref=f2e43]: ☀️
+            - generic [ref=f2e44]: Daily Wear
+          - button "💼 Office" [ref=f2e45] [cursor=pointer]:
+            - generic [ref=f2e46]: 💼
+            - generic [ref=f2e47]: Office
+          - button "🎓 College" [ref=f2e48] [cursor=pointer]:
+            - generic [ref=f2e49]: 🎓
+            - generic [ref=f2e50]: College
+          - button "🎉 Party" [ref=f2e51] [cursor=pointer]:
+            - generic [ref=f2e52]: 🎉
+            - generic [ref=f2e53]: Party
+          - button "💒 Wedding" [ref=f2e54] [cursor=pointer]:
+            - generic [ref=f2e55]: 💒
+            - generic [ref=f2e56]: Wedding
+          - button "🪔 Festive" [active] [ref=f2e57] [cursor=pointer]:
+            - generic [ref=f2e58]: 🪔
+            - generic [ref=f2e59]: Festive
+          - button "🎩 Formal" [ref=f2e60] [cursor=pointer]:
+            - generic [ref=f2e61]: 🎩
+            - generic [ref=f2e62]: Formal
+      - generic [ref=f2e165]:
+        - heading "🪔 Recommended Styles for Festive" [level=2] [ref=f2e166]
+        - paragraph [ref=f2e167]:
+          - text: Curated for
+          - strong [ref=f2e168]: Hourglass
+          - text: body type · Autumn season colors
+        - generic [ref=f2e169]:
+          - generic [ref=f2e170]:
+            - img "Anarkali" [ref=f2e172]
+            - generic [ref=f2e178]:
+              - paragraph [ref=f2e179]: Anarkali
+              - generic [ref=f2e180]: "#8B4513"
+          - generic [ref=f2e183]:
+            - img "Lehenga" [ref=f2e185]
+            - generic [ref=f2e191]:
+              - paragraph [ref=f2e192]: Lehenga
+              - generic [ref=f2e193]: "#A0522D"
+          - generic [ref=f2e196]:
+            - img "Saree" [ref=f2e198]
+            - generic [ref=f2e204]:
+              - paragraph [ref=f2e205]: Saree
+              - generic [ref=f2e206]: "#D2691E"
+      - generic [ref=f2e209]:
+        - heading "Shop The Look — Festive" [level=2] [ref=f2e210]
+        - paragraph [ref=f2e211]: Items matched to your color season and body type
+        - generic [ref=f2e212]:
+          - generic [ref=f2e216]:
+            - paragraph [ref=f2e217]: Anarkali Suit
+            - paragraph [ref=f2e218]: Elegant flared Anarkali suit — flatters all body types
+            - generic [ref=f2e219]: dress
+          - generic [ref=f2e225]:
+            - paragraph [ref=f2e226]: Silk Saree
+            - paragraph [ref=f2e227]: Elegant silk saree with golden zari border
+            - generic [ref=f2e228]: saree
+          - generic [ref=f2e234]:
+            - paragraph [ref=f2e235]: Lehenga Choli
+            - paragraph [ref=f2e236]: Stunning bridal lehenga with embroidery work
+            - generic [ref=f2e237]: lehenga
+          - generic [ref=f2e243]:
+            - paragraph [ref=f2e244]: Chikankari Kurta
+            - paragraph [ref=f2e245]: Delicate hand-embroidered chikankari kurta — timeless Indian style
+            - generic [ref=f2e246]: top
+          - generic [ref=f2e252]:
+            - paragraph [ref=f2e253]: Salwar Kameez
+            - paragraph [ref=f2e254]: Classic comfortable salwar kameez suit
+            - generic [ref=f2e255]: set
+      - generic [ref=f2e258]:
+        - heading "🥚 Face Shape Styling Tips — Oval" [level=2] [ref=f2e259]
+        - generic [ref=f2e260]:
+          - generic [ref=f2e261]:
+            - heading "necklines" [level=3] [ref=f2e262]
+            - list [ref=f2e263]:
+              - listitem [ref=f2e264]:
+                - text: V-neck
+                - generic [ref=f2e265]: — Elongates while framing balanced proportions
+              - listitem [ref=f2e266]:
+                - text: Scoop neck
+                - generic [ref=f2e267]: — Complements the natural curves of an oval face
+              - listitem [ref=f2e268]:
+                - text: Square neck
+                - generic [ref=f2e269]: — Adds definition and structure attractively
+          - generic [ref=f2e270]:
+            - heading "hairstyles" [level=3] [ref=f2e271]
+            - list [ref=f2e272]:
+              - listitem [ref=f2e273]:
+                - text: Long layers
+                - generic [ref=f2e274]: — Showcases the balanced proportions
+              - listitem [ref=f2e275]:
+                - text: Bob
+                - generic [ref=f2e276]: — Clean lines complement the oval shape
+              - listitem [ref=f2e277]:
+                - text: Curly/wavy
+                - generic [ref=f2e278]: — Natural volume works well with oval's balance
+          - generic [ref=f2e279]:
+            - heading "glasses" [level=3] [ref=f2e280]
+            - list [ref=f2e281]:
+              - listitem [ref=f2e282]:
+                - text: Wayfarer
+                - generic [ref=f2e283]: — Classic shape that works with oval's symmetry
+              - listitem [ref=f2e284]:
+                - text: Cat-eye
+                - generic [ref=f2e285]: — Adds a fun angular contrast to soft features
+              - listitem [ref=f2e286]:
+                - text: Aviator
+                - generic [ref=f2e287]: — Timeless and universally flattering for oval
+          - generic [ref=f2e288]:
+            - heading "earrings" [level=3] [ref=f2e289]
+            - list [ref=f2e290]:
+              - listitem [ref=f2e291]:
+                - text: Hoops (any size)
+                - generic [ref=f2e292]: — Oval faces can wear any hoop size
+              - listitem [ref=f2e293]:
+                - text: Drop earrings
+                - generic [ref=f2e294]: — Elongate and highlight cheekbones
+              - listitem [ref=f2e295]:
+                - text: Studs
+                - generic [ref=f2e296]: — Simple and elegant for everyday wear
+  - button "💬" [ref=f2e65] [cursor=pointer]

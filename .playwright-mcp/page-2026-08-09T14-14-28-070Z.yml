@@ -1,0 +1,73 @@
+- generic [ref=e3]:
+  - generic [ref=e77]:
+    - banner [ref=e78]:
+      - generic [ref=e79]: ✨
+      - generic [ref=e80]: AI Fashion Stylist
+      - generic [ref=e81]: Step 2 of 5 — Body Analysis
+    - main [ref=e82]:
+      - heading "Body Structure Analysis" [level=1] [ref=e83]
+      - paragraph [ref=e84]: We analyze your body proportions to recommend the most flattering dress styles for you.
+      - generic [ref=e85]:
+        - generic [ref=e86]:
+          - paragraph [ref=e87]: AI detected
+          - generic [ref=e88]:
+            - generic [ref=e89]:
+              - generic [ref=e90]: 👩
+              - generic [ref=e91]:
+                - paragraph [ref=e92]: Woman
+                - paragraph [ref=e93]: Person type
+            - paragraph [ref=e94]: Could not analyze body type automatically. Please select manually.
+          - paragraph [ref=e95]: ⚠️ Low confidence — please confirm your details below. For best results, use a full-body photo.
+        - generic [ref=e96]:
+          - heading "Who is in the photo?" [level=2] [ref=e97]
+          - generic [ref=e98]:
+            - button "👩 Woman" [ref=e99] [cursor=pointer]:
+              - generic [ref=e100]: 👩
+              - generic [ref=e101]: Woman
+            - button "👨 Man" [ref=e102] [cursor=pointer]:
+              - generic [ref=e103]: 👨
+              - generic [ref=e104]: Man
+            - button "👧 Teen Girl" [ref=e105] [cursor=pointer]:
+              - generic [ref=e106]: 👧
+              - generic [ref=e107]: Teen Girl
+            - button "👦 Teen Boy" [ref=e108] [cursor=pointer]:
+              - generic [ref=e109]: 👦
+              - generic [ref=e110]: Teen Boy
+            - button "🧒 Child" [ref=e111] [cursor=pointer]:
+              - generic [ref=e112]: 🧒
+              - generic [ref=e113]: Child
+            - button "👵 Senior Woman" [ref=e114] [cursor=pointer]:
+              - generic [ref=e115]: 👵
+              - generic [ref=e116]: Senior Woman
+            - button "👴 Senior Man" [ref=e117] [cursor=pointer]:
+              - generic [ref=e118]: 👴
+              - generic [ref=e119]: Senior Man
+        - generic [ref=e120]:
+          - heading "Select your body type" [level=2] [ref=e121]
+          - paragraph [ref=e122]: Choose the shape that best matches your proportions
+          - generic [ref=e123]:
+            - button [active] [ref=e124] [cursor=pointer]:
+              - generic [ref=e127]:
+                - paragraph [ref=e128]: Hourglass
+                - paragraph [ref=e129]: Balanced shoulders & hips, defined waist
+            - button [ref=e130] [cursor=pointer]:
+              - generic [ref=e133]:
+                - paragraph [ref=e134]: Pear
+                - paragraph [ref=e135]: Hips wider than shoulders
+            - button [ref=e136] [cursor=pointer]:
+              - generic [ref=e139]:
+                - paragraph [ref=e140]: Apple
+                - paragraph [ref=e141]: Fuller middle, great legs
+            - button [ref=e142] [cursor=pointer]:
+              - generic [ref=e145]:
+                - paragraph [ref=e146]: Rectangle
+                - paragraph [ref=e147]: Shoulders, waist & hips similar width
+            - button [ref=e148] [cursor=pointer]:
+              - generic [ref=e151]:
+                - paragraph [ref=e152]: Inverted Triangle
+                - paragraph [ref=e153]: Broader shoulders, narrower hips
+        - generic [ref=e154]:
+          - heading "Your photo" [level=2] [ref=e155]
+          - img "Uploaded" [ref=e156]
+        - button "Continue to Face Shape →" [ref=e157] [cursor=pointer]
+  - button "💬" [ref=e55] [cursor=pointer]

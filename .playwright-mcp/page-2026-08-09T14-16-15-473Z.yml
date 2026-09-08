@@ -1,0 +1,35 @@
+- generic [ref=f1e4]:
+  - banner [ref=f1e5]:
+    - generic [ref=f1e6]:
+      - generic [ref=f1e7]: ✨
+      - generic [ref=f1e8]: AI Fashion Stylist
+    - navigation [ref=f1e9]:
+      - link "How it works" [ref=f1e10] [cursor=pointer]:
+        - /url: "#how"
+      - link "Privacy" [ref=f1e11] [cursor=pointer]:
+        - /url: "#privacy"
+  - main [ref=f1e12]:
+    - generic [ref=f1e13]:
+      - generic [ref=f1e14]: 🎨
+      - text: Powered by AI — Personalized just for you
+    - heading "Your Personal AI Fashion Stylist" [level=1] [ref=f1e15]
+    - paragraph [ref=f1e16]: Upload a photo and get personalized color palettes, style recommendations, and outfit suggestions tailored to your unique features — then chat with your AI stylist to refine everything.
+    - button "Get Started — It's Free" [ref=f1e17] [cursor=pointer]
+    - paragraph [ref=f1e18]: No account needed · Your photo stays private
+    - generic [ref=f1e19]:
+      - generic [ref=f1e20]:
+        - generic [ref=f1e21]: 📸
+        - heading "Upload Your Photo" [level=3] [ref=f1e22]
+        - paragraph [ref=f1e23]: Take a selfie or upload a photo. We detect your face shape and skin tone directly in your browser — nothing leaves your device at this stage.
+      - generic [ref=f1e24]:
+        - generic [ref=f1e25]: 🎨
+        - heading "Get Your Color Season" [level=3] [ref=f1e26]
+        - paragraph [ref=f1e27]: We analyze your undertone and skin depth to classify your seasonal color palette — Spring, Summer, Autumn, or Winter.
+      - generic [ref=f1e28]:
+        - generic [ref=f1e29]: 💬
+        - heading "Chat With Your Stylist" [level=3] [ref=f1e30]
+        - paragraph [ref=f1e31]: Describe the occasion, your preferences, or say "no bright colors" — your AI stylist updates recommendations conversationally.
+    - generic [ref=f1e32]:
+      - strong [ref=f1e33]: "Privacy:"
+      - text: Face detection runs entirely in your browser. Photos sent to our server for color analysis are processed in memory only and never stored on disk.
+  - contentinfo [ref=f1e34]: AI Fashion Stylist — v1 · Built with React, FastAPI & Claude

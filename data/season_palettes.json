@@ -1,0 +1,34 @@
+{
+  "Spring": {
+    "description": "Warm, light, and bright. Warm golden undertone with light-to-medium depth.",
+    "best_colors": ["#FFD700", "#FF8C00", "#FF6347", "#90EE90", "#00CED1", "#FFA07A", "#FFDAB9", "#F0E68C", "#98FB98", "#87CEEB"],
+    "avoid_colors": ["#000080", "#4B0082", "#808080", "#A9A9A9", "#000000"],
+    "metal_tone": "gold",
+    "undertone": "warm",
+    "color_names": ["Golden Yellow", "Dark Orange", "Tomato Red", "Light Green", "Dark Turquoise", "Light Salmon", "Peach Puff", "Khaki", "Pale Green", "Sky Blue"]
+  },
+  "Summer": {
+    "description": "Cool, light, and muted. Cool pink/rosy undertone with light-to-medium depth.",
+    "best_colors": ["#C8A2C8", "#B0C4DE", "#F08080", "#E6E6FA", "#DDA0DD", "#ADD8E6", "#FFB6C1", "#98FB98", "#AFEEEE", "#D3D3D3"],
+    "avoid_colors": ["#FF8C00", "#FF4500", "#DAA520", "#8B4513", "#006400"],
+    "metal_tone": "silver",
+    "undertone": "cool",
+    "color_names": ["Lilac", "Light Steel Blue", "Light Coral", "Lavender", "Plum", "Light Blue", "Light Pink", "Pale Green", "Pale Turquoise", "Light Gray"]
+  },
+  "Autumn": {
+    "description": "Warm, deep, and muted. Warm golden/olive undertone with medium-to-deep depth.",
+    "best_colors": ["#8B4513", "#A0522D", "#D2691E", "#556B2F", "#6B8E23", "#B8860B", "#CD853F", "#808000", "#800000", "#2E8B57"],
+    "avoid_colors": ["#00BFFF", "#FF69B4", "#E6E6FA", "#F0FFFF", "#F5F5F5"],
+    "metal_tone": "gold",
+    "undertone": "warm",
+    "color_names": ["Saddle Brown", "Sienna", "Chocolate", "Dark Olive Green", "Olive Drab", "Dark Goldenrod", "Peru", "Olive", "Maroon", "Sea Green"]
+  },
+  "Winter": {
+    "description": "Cool, deep, and bright. Cool blue/pink undertone with medium-to-deep depth.",
+    "best_colors": ["#000080", "#8B0000", "#FFFFFF", "#000000", "#4B0082", "#DC143C", "#00008B", "#191970", "#008080", "#C0C0C0"],
+    "avoid_colors": ["#F0E68C", "#D2B48C", "#F5DEB3", "#DEB887", "#FFDEAD"],
+    "metal_tone": "silver",
+    "undertone": "cool",
+    "color_names": ["Navy", "Dark Red", "White", "Black", "Indigo", "Crimson", "Dark Blue", "Midnight Blue", "Teal", "Silver"]
+  }
+}

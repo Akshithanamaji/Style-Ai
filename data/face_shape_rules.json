@@ -1,0 +1,146 @@
+{
+  "oval": {
+    "description": "Oval is the most versatile face shape — most styles work well.",
+    "necklines": [
+      { "style": "V-neck", "reason": "Elongates while framing balanced proportions" },
+      { "style": "Scoop neck", "reason": "Complements the natural curves of an oval face" },
+      { "style": "Square neck", "reason": "Adds definition and structure attractively" },
+      { "style": "Off-shoulder", "reason": "Draws attention to the collarbone area beautifully" }
+    ],
+    "glasses": [
+      { "style": "Wayfarer", "reason": "Classic shape that works with oval's symmetry" },
+      { "style": "Cat-eye", "reason": "Adds a fun angular contrast to soft features" },
+      { "style": "Aviator", "reason": "Timeless and universally flattering for oval" }
+    ],
+    "hairstyles": [
+      { "style": "Long layers", "reason": "Showcases the balanced proportions" },
+      { "style": "Bob", "reason": "Clean lines complement the oval shape" },
+      { "style": "Curly/wavy", "reason": "Natural volume works well with oval's balance" }
+    ],
+    "earrings": [
+      { "style": "Hoops (any size)", "reason": "Oval faces can wear any hoop size" },
+      { "style": "Drop earrings", "reason": "Elongate and highlight cheekbones" },
+      { "style": "Studs", "reason": "Simple and elegant for everyday wear" }
+    ]
+  },
+  "round": {
+    "description": "Round faces benefit from styles that add length and reduce width.",
+    "necklines": [
+      { "style": "Deep V-neck", "reason": "Creates a vertical line that elongates the face" },
+      { "style": "Cowl neck", "reason": "Adds length and draws the eye downward" },
+      { "style": "Plunging neckline", "reason": "Lengthens the appearance of a round face" },
+      { "style": "Asymmetric neckline", "reason": "Breaks the circular symmetry with interest" }
+    ],
+    "glasses": [
+      { "style": "Angular/rectangular", "reason": "Adds definition and contrast to soft curves" },
+      { "style": "Wayfarer", "reason": "Square corners help elongate a round face" },
+      { "style": "Cat-eye", "reason": "Upswept corners draw the eye upward and outward" }
+    ],
+    "hairstyles": [
+      { "style": "Long layers past shoulders", "reason": "Creates length and slims the face" },
+      { "style": "Side-swept bangs", "reason": "Diagonal lines break circular symmetry" },
+      { "style": "High top / voluminous crown", "reason": "Adds height to elongate the face" }
+    ],
+    "earrings": [
+      { "style": "Long drops / chandeliers", "reason": "Elongate and slim the face visually" },
+      { "style": "Angular dangles", "reason": "Add structure against round features" },
+      { "style": "Avoid large round hoops", "reason": "They echo and amplify the circular shape" }
+    ]
+  },
+  "square": {
+    "description": "Square faces benefit from soft curves to balance the strong jaw.",
+    "necklines": [
+      { "style": "Round neck / scoop", "reason": "Soft curves soften the angular jaw" },
+      { "style": "V-neck", "reason": "Draws the eye inward and down, reducing jaw width emphasis" },
+      { "style": "Sweetheart neckline", "reason": "Curved shape balances a square jaw beautifully" },
+      { "style": "Off-shoulder", "reason": "Horizontal emphasis at shoulders balances the jaw" }
+    ],
+    "glasses": [
+      { "style": "Round / oval frames", "reason": "Soft curves contrast and soften a strong jaw" },
+      { "style": "Aviator", "reason": "Rounded bottom edge softens angular features" },
+      { "style": "Rimless", "reason": "Minimal structure doesn't add more angles" }
+    ],
+    "hairstyles": [
+      { "style": "Soft waves / curls", "reason": "Organic curves counterbalance the jaw's angles" },
+      { "style": "Layered bob at chin", "reason": "Softens the jaw with movement at that level" },
+      { "style": "Side part", "reason": "Asymmetry reduces the symmetric squareness" }
+    ],
+    "earrings": [
+      { "style": "Hoops (medium)", "reason": "Round shape softens the jaw line" },
+      { "style": "Teardrop drops", "reason": "Curved shape complements angular features" },
+      { "style": "Avoid angular/geometric", "reason": "Square earrings amplify the jaw's squareness" }
+    ]
+  },
+  "heart": {
+    "description": "Heart-shaped faces benefit from adding width at the jaw and reducing forehead emphasis.",
+    "necklines": [
+      { "style": "Bateau / boat neck", "reason": "Wide neckline draws attention away from wide forehead" },
+      { "style": "Square neck", "reason": "Adds visual width at the chin area to balance" },
+      { "style": "Cowl neck", "reason": "Draped fabric minimizes the width difference" },
+      { "style": "Avoid deep V-necks", "reason": "Emphasizes the narrow chin and wide forehead contrast" }
+    ],
+    "glasses": [
+      { "style": "Bottom-heavy frames", "reason": "Visual weight at the bottom balances wide forehead" },
+      { "style": "Oval frames", "reason": "Soft shape complements the pointed chin" },
+      { "style": "Light-colored / rimless top", "reason": "Reduces visual emphasis on the wide forehead" }
+    ],
+    "hairstyles": [
+      { "style": "Volume at the jawline", "reason": "Builds visual width to balance the forehead" },
+      { "style": "Chin-length bob", "reason": "Adds width exactly where the face is narrowest" },
+      { "style": "Side-swept bangs", "reason": "Reduces the apparent width of a wide forehead" }
+    ],
+    "earrings": [
+      { "style": "Chandelier / wide drops", "reason": "Add visual width at jaw level to balance" },
+      { "style": "Triangle pointing down", "reason": "Mimics the face shape harmoniously" },
+      { "style": "Avoid wide studs at temple", "reason": "Amplifies the already-wide forehead" }
+    ]
+  },
+  "diamond": {
+    "description": "Diamond faces benefit from softening prominent cheekbones and adding width at forehead and chin.",
+    "necklines": [
+      { "style": "Off-shoulder", "reason": "Adds width at the shoulders to balance wide cheeks" },
+      { "style": "Boat neck", "reason": "Horizontal line creates visual width at the top" },
+      { "style": "Scoop neck", "reason": "Soft opening draws focus away from the cheekbones" },
+      { "style": "V-neck", "reason": "Elongates and draws the eye down from cheekbones" }
+    ],
+    "glasses": [
+      { "style": "Cat-eye", "reason": "Accentuates the forehead and brow to add balance" },
+      { "style": "Oval with top emphasis", "reason": "Widens the appearance of the forehead" },
+      { "style": "Semi-rimless (top)", "reason": "Adds definition at the brow area" }
+    ],
+    "hairstyles": [
+      { "style": "Full bangs", "reason": "Adds width at the forehead to balance cheeks" },
+      { "style": "Volume at crown and chin", "reason": "Balances the prominent cheekbone width" },
+      { "style": "Chin-length cuts with volume", "reason": "Widens the narrow chin area" }
+    ],
+    "earrings": [
+      { "style": "Studs or small hoops", "reason": "Don't add extra width at the widest cheek point" },
+      { "style": "Drop earrings at lobe level", "reason": "Draw attention down past wide cheekbones" },
+      { "style": "Avoid wide statement earrings", "reason": "Amplify cheekbone width unnecessarily" }
+    ]
+  },
+  "long": {
+    "description": "Long faces benefit from styles that add width and reduce the appearance of length.",
+    "necklines": [
+      { "style": "Boat neck / bateau", "reason": "Strong horizontal line visually shortens a long face" },
+      { "style": "Square neck", "reason": "Wide opening adds visual width" },
+      { "style": "Cowl / draped", "reason": "Horizontal drape breaks the vertical line" },
+      { "style": "Avoid deep V-necks", "reason": "Extend the vertical line making the face appear longer" }
+    ],
+    "glasses": [
+      { "style": "Oversized / wide frames", "reason": "Wide frames add horizontal emphasis" },
+      { "style": "Round frames", "reason": "Circular shape breaks the long vertical" },
+      { "style": "Decorative temples", "reason": "Draw the eye sideways rather than up and down" }
+    ],
+    "hairstyles": [
+      { "style": "Full bangs", "reason": "Reduce visible face length from forehead to chin" },
+      { "style": "Volume at the sides", "reason": "Adds width to counterbalance the long face" },
+      { "style": "Layered bob", "reason": "Keeps the silhouette wide and short" }
+    ],
+    "earrings": [
+      { "style": "Wide studs / cluster earrings", "reason": "Add horizontal width at the ear" },
+      { "style": "Wide hoops", "reason": "Extend visually sideways to balance face length" },
+      { "style": "Avoid very long drops", "reason": "Amplify the vertical of the long face" }
+    ]
+  }
+}

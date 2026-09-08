@@ -1,0 +1,35 @@
+- generic [ref=e4]:
+  - banner [ref=e5]:
+    - generic [ref=e6]:
+      - generic [ref=e7]: ✨
+      - generic [ref=e8]: AI Fashion Stylist
+    - navigation [ref=e9]:
+      - link "How it works" [ref=e10] [cursor=pointer]:
+        - /url: "#how"
+      - link "Privacy" [ref=e11] [cursor=pointer]:
+        - /url: "#privacy"
+  - main [ref=e12]:
+    - generic [ref=e13]:
+      - generic [ref=e14]: 🎨
+      - text: Powered by AI — Personalized just for you
+    - heading "Your Personal AI Fashion Stylist" [level=1] [ref=e15]
+    - paragraph [ref=e16]: Upload a photo and get personalized color palettes, style recommendations, and outfit suggestions tailored to your unique features — then chat with your AI stylist to refine everything.
+    - button "Get Started — It's Free" [ref=e17] [cursor=pointer]
+    - paragraph [ref=e18]: No account needed · Your photo stays private
+    - generic [ref=e19]:
+      - generic [ref=e20]:
+        - generic [ref=e21]: 📸
+        - heading "Upload Your Photo" [level=3] [ref=e22]
+        - paragraph [ref=e23]: Take a selfie or upload a photo. We detect your face shape and skin tone directly in your browser — nothing leaves your device at this stage.
+      - generic [ref=e24]:
+        - generic [ref=e25]: 🎨
+        - heading "Get Your Color Season" [level=3] [ref=e26]
+        - paragraph [ref=e27]: We analyze your undertone and skin depth to classify your seasonal color palette — Spring, Summer, Autumn, or Winter.
+      - generic [ref=e28]:
+        - generic [ref=e29]: 💬
+        - heading "Chat With Your Stylist" [level=3] [ref=e30]
+        - paragraph [ref=e31]: Describe the occasion, your preferences, or say "no bright colors" — your AI stylist updates recommendations conversationally.
+    - generic [ref=e32]:
+      - strong [ref=e33]: "Privacy:"
+      - text: Face detection runs entirely in your browser. Photos sent to our server for color analysis are processed in memory only and never stored on disk.
+  - contentinfo [ref=e34]: AI Fashion Stylist — v1 · Built with React, FastAPI & Claude
