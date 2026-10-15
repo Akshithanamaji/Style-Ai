@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react'
 
 const OCCASIONS = [
-  { id: 'daily',   label: 'Daily Wear',  icon: '☀️',  desc: 'Everyday outfits' },
-  { id: 'office',  label: 'Office',      icon: '💼',  desc: 'Work ready' },
-  { id: 'college', label: 'College',     icon: '🎓',  desc: 'Campus style' },
-  { id: 'party',   label: 'Party',       icon: '🎉',  desc: 'Night out' },
-  { id: 'wedding', label: 'Wedding',     icon: '💒',  desc: 'Special occasion' },
-  { id: 'festive', label: 'Festive',     icon: '🪔',  desc: 'Festivals & traditional' },
-  { id: 'formal',  label: 'Formal',      icon: '🎩',  desc: 'Black tie events' },
+  { id: 'daily',      label: 'Daily Wear',  icon: '☀️',  desc: 'Everyday outfits' },
+  { id: 'office',     label: 'Office',      icon: '💼',  desc: 'Work ready' },
+  { id: 'college',    label: 'College',     icon: '🎓',  desc: 'Campus style' },
+  { id: 'party',      label: 'Party',       icon: '🎉',  desc: 'Night out' },
+  { id: 'wedding',    label: 'Wedding',     icon: '💒',  desc: 'Special occasion' },
+  { id: 'festive',    label: 'Festive',     icon: '🪔',  desc: 'Festivals & traditional' },
+  { id: 'formal',     label: 'Formal',      icon: '🎩',  desc: 'Black tie events' },
+  { id: 'night_wear', label: 'Night Wear',  icon: '🌙',  desc: 'Sleepwear & loungewear' },
+  { id: 'functions',  label: 'Functions',   icon: '🎊',  desc: 'Family functions & ceremonies' },
 ]
 
 const SHAPE_ICONS = { oval:'🥚', round:'⭕', square:'⬜', heart:'💜', diamond:'💎', long:'📏' }
@@ -45,6 +47,7 @@ const DRESS_POINTS = {
   'palazzo':     [[28,0],[72,0],[72,35],[90,35],[90,100],[55,100],[55,35],[45,35],[45,100],[10,100],[10,35],[28,35]],
   'kids-frock':  [[28,0],[72,0],[90,100],[10,100]],
   'comfy-tunic': [[25,0],[75,0],[80,100],[20,100]],
+  'sleepwear':   [[26,0],[74,0],[78,100],[22,100]],
   'default':     [[28,0],[72,0],[88,100],[12,100]],
 }
 
@@ -53,7 +56,7 @@ const HEM_Y = {
   'wrap': 132, 'a-line': 130, 'bodycon': 118, 'shift': 128, 'maxi': 178,
   'empire': 130, 'flare': 128, 'peplum': 112, 'suit': 196, 'kurta': 112,
   'lehenga': 196, 'saree': 196, 'anarkali': 172, 'palazzo': 196,
-  'kids-frock': 100, 'comfy-tunic': 108, 'default': 126,
+  'kids-frock': 100, 'comfy-tunic': 108, 'sleepwear': 190, 'default': 126,
 }
 
 const SKIN_TONES = ['#e8b894', '#c9895f', '#8d5524', '#f2c9a1', '#a9673f']
@@ -68,7 +71,7 @@ const DRESS_PHOTO_IDS = {
   'maxi': 25731827, 'empire': 8693623, 'flare': 33244272, 'peplum': 33736386,
   'suit': 32275951, 'kurta': 12279088, 'lehenga': 28405815, 'saree': 7176430,
   'anarkali': 34077588, 'palazzo': 18978267, 'kids-frock': 36893900,
-  'comfy-tunic': 32757041, 'default': 16987325,
+  'comfy-tunic': 32757041, 'sleepwear': 20377876, 'default': 16987325,
 }
 
 function getDressPhotoUrl(key) {
@@ -78,6 +81,7 @@ function getDressPhotoUrl(key) {
 
 function getDressStyleKey(styleName) {
   const name = styleName.toLowerCase()
+  if (name.includes('pajama') || name.includes('pyjama') || name.includes('nightgown') || name.includes('nightsuit') || name.includes('night suit') || name.includes('sleep') || name.includes('lounge') || name.includes('cami')) return 'sleepwear'
   if (name.includes('wrap')) return 'wrap'
   if (name.includes('a-line') || name.includes('a line') || name.includes('flare') || name.includes('flared')) return 'a-line'
   if (name.includes('bodycon') || name.includes('fitted')) return 'bodycon'
@@ -193,11 +197,11 @@ function StyleCard({ styleName, colors, index }) {
         </div>
       </div>
 
-      <div className="p-3">
-        <p className="font-semibold text-gray-800 text-sm leading-tight">{styleName}</p>
+      <div className="p-3.5">
+        <p className="font-semibold text-white text-sm leading-tight">{styleName}</p>
         <div className="flex items-center gap-1.5 mt-1.5">
-          <div className="w-3 h-3 rounded-full" style={{ background: mainColor }} />
-          <span className="text-xs text-gray-400 font-mono">{mainColor}</span>
+          <div className="w-3 h-3 rounded-full border border-white/20" style={{ background: mainColor }} />
+          <span className="text-xs text-white/50 font-mono">{mainColor}</span>
         </div>
       </div>
     </div>
@@ -208,7 +212,7 @@ function CatalogCard({ item }) {
   const [imgError, setImgError] = useState(false)
 
   return (
-    <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+    <div className="bg-white/[0.04] rounded-2xl overflow-hidden backdrop-blur-md border border-white/10 hover:border-white/25 transition-all">
       {!imgError ? (
         <img
           src={item.image_url}
@@ -221,20 +225,20 @@ function CatalogCard({ item }) {
           <div className="w-14 h-14 rounded-xl shadow-sm" style={{ background: item.dominant_color }} />
         </div>
       )}
-      <div className="p-3">
-        <p className="font-medium text-gray-800 text-sm leading-tight">{item.name}</p>
-        <p className="text-xs text-gray-400 mt-0.5">{item.description}</p>
-        <div className="flex items-center gap-1.5 mt-2">
-          <span className="text-xs bg-purple-50 text-purple-600 px-2 py-0.5 rounded-full capitalize">{item.category}</span>
-          <div className="w-4 h-4 rounded-full border border-gray-200" style={{ background: item.dominant_color }} />
+      <div className="p-3.5">
+        <p className="font-medium text-white text-sm leading-tight">{item.name}</p>
+        <p className="text-xs text-white/50 mt-1">{item.description}</p>
+        <div className="flex items-center gap-2 mt-2.5">
+          <span className="text-xs bg-white/10 text-white/80 px-2.5 py-0.5 rounded-full capitalize">{item.category}</span>
+          <div className="w-3.5 h-3.5 rounded-full border border-white/20" style={{ background: item.dominant_color }} />
         </div>
       </div>
     </div>
   )
 }
 
-export default function ResultsPage({ faceShape, season, undertone, depth, skinHex, palette: initialPalette, bodyType, genderGroup, personCategory }) {
-  const [occasion, setOccasion] = useState('daily')
+export default function ResultsPage({ faceShape, season, undertone, depth, skinHex, palette: initialPalette, bodyType, genderGroup, personCategory, hairLength, defaultOccasion }) {
+  const [occasion, setOccasion] = useState(defaultOccasion || 'daily')
   const [recs, setRecs] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
@@ -271,63 +275,104 @@ export default function ResultsPage({ faceShape, season, undertone, depth, skinH
   const bodyInfo = recs?.body_type_info || {}
   const dressStyles = recs?.dress_styles || []
 
+  const GRAIN_URI =
+    `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E` +
+    `%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E` +
+    `%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E` +
+    `%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E")`
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-rose-50">
-      <header className="flex items-center gap-3 px-6 py-4 bg-white/70 backdrop-blur-sm border-b border-purple-100">
-        <span className="text-xl">✨</span>
-        <span className="font-semibold text-purple-800">AI Fashion Stylist</span>
-        <span className="ml-2 text-sm text-gray-400">Step 5 of 5 — Your Complete Style Report</span>
+    <div className="min-h-screen bg-[#111216] text-white relative overflow-hidden" style={{ fontFamily: "'Inter', sans-serif" }}>
+      {/* Grain overlay */}
+      <div
+        aria-hidden="true"
+        className="fixed inset-0 pointer-events-none z-50"
+        style={{
+          backgroundImage: GRAIN_URI,
+          backgroundSize: '200px 200px',
+          backgroundRepeat: 'repeat',
+          opacity: 0.35,
+        }}
+      />
+
+      {/* Header */}
+      <header className="relative z-20 flex items-center justify-between px-6 py-4 bg-[#14151B]/80 backdrop-blur-md border-b border-white/10">
+        <div className="flex items-center gap-3">
+          <span className="text-xl">✨</span>
+          <span
+            style={{ fontFamily: "'Anton', sans-serif" }}
+            className="text-lg tracking-wider uppercase text-white"
+          >
+            AI Fashion Stylist
+          </span>
+        </div>
+        <div className="flex items-center gap-3">
+          <span className="text-xs tracking-wider uppercase text-white/50 font-medium">Step 5 of 5 — Your Complete Style Report</span>
+          {/* Pill step indicator */}
+          <div className="flex items-center gap-1.5">
+            <span className="w-2 h-2 rounded-full bg-[#F4845F]" />
+            <span className="w-2 h-2 rounded-full bg-[#6BBF7A]" />
+            <span className="w-2 h-2 rounded-full bg-[#E882B4]" />
+            <span className="w-2 h-2 rounded-full bg-[#6EB5FF]" />
+            <span className="w-5 h-2 rounded-full bg-[#F4845F]" />
+          </div>
+        </div>
       </header>
 
-      <div className="max-w-5xl mx-auto w-full">
-        <main className="px-4 py-8">
+      <div className="relative z-10 max-w-5xl mx-auto w-full">
+        <main className="px-4 py-10">
 
           {/* Full Profile Summary */}
-          <div className="bg-white rounded-2xl p-5 shadow-sm border border-purple-100 mb-6">
-            <h2 className="font-bold text-gray-900 mb-4 text-base">Your Style Profile</h2>
-            <div className="flex flex-wrap gap-5 items-center">
+          <div className="bg-white/[0.04] backdrop-blur-md rounded-3xl p-6 border border-white/10 mb-8">
+            <h2
+              style={{ fontFamily: "'Anton', sans-serif" }}
+              className="text-xl uppercase tracking-wider text-white mb-4"
+            >
+              Your Style Profile
+            </h2>
+            <div className="flex flex-wrap gap-6 items-center">
               {personCategory && (
-                <div className="flex items-center gap-2">
-                  <span className="text-3xl">{PERSON_ICONS[personCategory] || '🧍'}</span>
+                <div className="flex items-center gap-3">
+                  <span className="text-4xl p-2 rounded-2xl bg-white/10">{PERSON_ICONS[personCategory] || '🧍'}</span>
                   <div>
-                    <p className="text-xs text-gray-400">Person</p>
-                    <p className="font-bold text-gray-900 capitalize">{personCategory?.replace('_', ' ')}</p>
+                    <p className="text-xs text-white/50 uppercase tracking-wider">Person</p>
+                    <p className="font-bold text-white capitalize text-base">{personCategory?.replace('_', ' ')}</p>
                   </div>
                 </div>
               )}
               {bodyType && bodyType !== 'unknown' && (
-                <div className="flex items-center gap-2">
-                  <span className="text-2xl">{BODY_ICONS[bodyType] || '👤'}</span>
+                <div className="flex items-center gap-3 pl-4 border-l border-white/10">
+                  <span className="text-3xl">{BODY_ICONS[bodyType] || '👤'}</span>
                   <div>
-                    <p className="text-xs text-gray-400">Body Type</p>
-                    <p className="font-bold text-gray-900 capitalize">{bodyType.replace('_', ' ')}</p>
+                    <p className="text-xs text-white/50 uppercase tracking-wider">Body Type</p>
+                    <p className="font-bold text-white capitalize text-base">{bodyType.replace('_', ' ')}</p>
                   </div>
                 </div>
               )}
               {faceShape && (
-                <div className="flex items-center gap-2">
-                  <span className="text-2xl">{SHAPE_ICONS[faceShape]}</span>
+                <div className="flex items-center gap-3 pl-4 border-l border-white/10">
+                  <span className="text-3xl">{SHAPE_ICONS[faceShape]}</span>
                   <div>
-                    <p className="text-xs text-gray-400">Face Shape</p>
-                    <p className="font-bold text-gray-900 capitalize">{faceShape}</p>
+                    <p className="text-xs text-white/50 uppercase tracking-wider">Face Shape</p>
+                    <p className="font-bold text-white capitalize text-base">{faceShape}</p>
                   </div>
                 </div>
               )}
               {season && (
-                <div className="flex items-center gap-2">
-                  <span className="text-2xl">{SEASON_ICONS[season]}</span>
+                <div className="flex items-center gap-3 pl-4 border-l border-white/10">
+                  <span className="text-3xl">{SEASON_ICONS[season]}</span>
                   <div>
-                    <p className="text-xs text-gray-400">Color Season</p>
-                    <p className="font-bold text-gray-900">{season}</p>
+                    <p className="text-xs text-white/50 uppercase tracking-wider">Color Season</p>
+                    <p className="font-bold text-white text-base">{season}</p>
                   </div>
                 </div>
               )}
               {skinHex && (
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-full border-2 border-gray-200" style={{ background: skinHex }} />
+                <div className="flex items-center gap-3 pl-4 border-l border-white/10">
+                  <div className="w-8 h-8 rounded-full border-2 border-white/30 shadow-md" style={{ background: skinHex }} />
                   <div>
-                    <p className="text-xs text-gray-400">Undertone</p>
-                    <p className="font-bold text-gray-900 capitalize">{undertone} · {depth}</p>
+                    <p className="text-xs text-white/50 uppercase tracking-wider">Undertone</p>
+                    <p className="font-bold text-white capitalize text-base">{undertone} · {depth}</p>
                   </div>
                 </div>
               )}
@@ -336,49 +381,54 @@ export default function ResultsPage({ faceShape, season, undertone, depth, skinH
 
           {/* Body Type Advice */}
           {bodyInfo && bodyInfo.label && (
-            <section className="bg-white rounded-2xl p-5 shadow-sm border border-purple-100 mb-6">
-              <div className="flex items-center gap-3 mb-4">
-                <span className="text-3xl">{bodyInfo.icon || bodyInfo.emoji_icon || '👤'}</span>
+            <section className="bg-white/[0.04] backdrop-blur-md rounded-3xl p-6 border border-white/10 mb-8">
+              <div className="flex items-center gap-4 mb-5">
+                <span className="text-4xl p-2 rounded-2xl bg-white/10">{bodyInfo.icon || bodyInfo.emoji_icon || '👤'}</span>
                 <div>
-                  <h2 className="font-bold text-gray-900 text-lg">{bodyInfo.label} Body Type</h2>
-                  <p className="text-sm text-gray-500">{bodyInfo.description}</p>
+                  <h2
+                    style={{ fontFamily: "'Anton', sans-serif" }}
+                    className="text-2xl uppercase tracking-wider text-white"
+                  >
+                    {bodyInfo.label} Body Type
+                  </h2>
+                  <p className="text-sm text-white/70 mt-0.5">{bodyInfo.description}</p>
                 </div>
               </div>
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className="grid md:grid-cols-2 gap-5">
                 {bodyInfo.best_silhouettes && (
                   <div>
-                    <h3 className="font-semibold text-green-700 text-sm mb-2">✅ Best Silhouettes</h3>
+                    <h3 className="font-semibold text-[#6BBF7A] text-sm mb-2.5">✅ Best Silhouettes</h3>
                     <div className="flex flex-wrap gap-2">
                       {bodyInfo.best_silhouettes.map((s) => (
-                        <span key={s} className="text-xs bg-green-50 text-green-700 px-2.5 py-1 rounded-full border border-green-100">{s}</span>
+                        <span key={s} className="text-xs bg-[#6BBF7A]/15 text-[#6BBF7A] px-3 py-1.5 rounded-full border border-[#6BBF7A]/30 font-medium">{s}</span>
                       ))}
                     </div>
                   </div>
                 )}
                 {(bodyInfo.best_fits || bodyInfo.best_necklines) && (
                   <div>
-                    <h3 className="font-semibold text-purple-700 text-sm mb-2">👗 Best Styles</h3>
+                    <h3 className="font-semibold text-[#E882B4] text-sm mb-2.5">👗 Best Styles</h3>
                     <div className="flex flex-wrap gap-2">
                       {(bodyInfo.best_necklines || bodyInfo.best_fits || []).map((s) => (
-                        <span key={s} className="text-xs bg-purple-50 text-purple-700 px-2.5 py-1 rounded-full border border-purple-100">{s}</span>
+                        <span key={s} className="text-xs bg-[#E882B4]/15 text-[#E882B4] px-3 py-1.5 rounded-full border border-[#E882B4]/30 font-medium">{s}</span>
                       ))}
                     </div>
                   </div>
                 )}
                 {bodyInfo.avoid && (
                   <div>
-                    <h3 className="font-semibold text-red-600 text-sm mb-2">❌ Avoid</h3>
+                    <h3 className="font-semibold text-red-400 text-sm mb-2.5">❌ Avoid</h3>
                     <div className="flex flex-wrap gap-2">
                       {bodyInfo.avoid.map((s) => (
-                        <span key={s} className="text-xs bg-red-50 text-red-600 px-2.5 py-1 rounded-full border border-red-100">{s}</span>
+                        <span key={s} className="text-xs bg-red-500/15 text-red-300 px-3 py-1.5 rounded-full border border-red-500/30 font-medium">{s}</span>
                       ))}
                     </div>
                   </div>
                 )}
                 {bodyInfo.tips && (
                   <div className="md:col-span-2">
-                    <div className="bg-amber-50 border border-amber-100 rounded-xl px-4 py-3">
-                      <p className="text-sm text-amber-800">💡 <strong>Stylist Tip:</strong> {bodyInfo.tips}</p>
+                    <div className="bg-amber-500/10 border border-amber-500/30 rounded-2xl px-5 py-3.5">
+                      <p className="text-sm text-amber-200">💡 <strong>Stylist Tip:</strong> {bodyInfo.tips}</p>
                     </div>
                   </div>
                 )}
@@ -388,38 +438,43 @@ export default function ResultsPage({ faceShape, season, undertone, depth, skinH
 
           {/* Color Palette */}
           {palette && (
-            <section className="bg-white rounded-2xl p-5 shadow-sm border border-purple-100 mb-6">
-              <div className="flex items-center gap-2 mb-1">
-                <span className="text-2xl">{SEASON_ICONS[season]}</span>
-                <h2 className="font-bold text-gray-900 text-lg">{season} Color Palette</h2>
+            <section className="bg-white/[0.04] backdrop-blur-md rounded-3xl p-6 border border-white/10 mb-8">
+              <div className="flex items-center gap-3 mb-2">
+                <span className="text-3xl p-2 rounded-2xl bg-white/10">{SEASON_ICONS[season]}</span>
+                <h2
+                  style={{ fontFamily: "'Anton', sans-serif" }}
+                  className="text-2xl uppercase tracking-wider text-white"
+                >
+                  {season} Color Palette
+                </h2>
               </div>
-              <p className="text-sm text-gray-500 mb-4">{palette.description}</p>
+              <p className="text-sm text-white/70 mb-5">{palette.description}</p>
 
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <p className="text-sm font-semibold text-gray-700 mb-2">Your best colors:</p>
-                  <div className="flex flex-wrap gap-2 mb-1">
+                  <p className="text-xs uppercase tracking-wider font-semibold text-white/60 mb-3">Your best colors:</p>
+                  <div className="flex flex-wrap gap-2.5 mb-2">
                     {palette.best_colors?.map((hex, i) => (
                       <div key={hex} className="flex flex-col items-center gap-1" title={palette.color_names?.[i]}>
-                        <div className="w-10 h-10 rounded-xl border border-gray-100 shadow-sm" style={{ background: hex }} />
-                        <span className="text-[9px] text-gray-400 font-mono">{hex}</span>
-                        {palette.color_names?.[i] && <span className="text-[9px] text-gray-400 text-center leading-tight">{palette.color_names[i]}</span>}
+                        <div className="w-10 h-10 rounded-xl border border-white/20 shadow-md" style={{ background: hex }} />
+                        <span className="text-[9px] text-white/50 font-mono">{hex}</span>
+                        {palette.color_names?.[i] && <span className="text-[9px] text-white/50 text-center leading-tight max-w-10 truncate">{palette.color_names[i]}</span>}
                       </div>
                     ))}
                   </div>
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-gray-700 mb-2">Colors to avoid:</p>
-                  <div className="flex flex-wrap gap-2 mb-3">
+                  <p className="text-xs uppercase tracking-wider font-semibold text-white/60 mb-3">Colors to avoid:</p>
+                  <div className="flex flex-wrap gap-2.5 mb-4">
                     {palette.avoid_colors?.map((hex) => (
                       <div key={hex} className="relative">
-                        <div className="w-10 h-10 rounded-xl border border-gray-100 shadow-sm opacity-60" style={{ background: hex }} />
-                        <div className="absolute inset-0 flex items-center justify-center text-red-500 font-bold text-sm">✕</div>
+                        <div className="w-10 h-10 rounded-xl border border-white/20 shadow-md opacity-60" style={{ background: hex }} />
+                        <div className="absolute inset-0 flex items-center justify-center text-red-400 font-bold text-sm">✕</div>
                       </div>
                     ))}
                   </div>
-                  <p className="text-xs text-gray-500">
-                    Best metals: <strong className="text-gray-700">{palette.metal_tone === 'gold' ? '🥇 Gold' : '🥈 Silver'}</strong>
+                  <p className="text-xs text-white/60">
+                    Best metals: <strong className="text-white">{palette.metal_tone === 'gold' ? '🥇 Gold' : '🥈 Silver'}</strong>
                   </p>
                 </div>
               </div>
@@ -427,48 +482,56 @@ export default function ResultsPage({ faceShape, season, undertone, depth, skinH
           )}
 
           {/* Occasion Selector */}
-          <div className="mb-6">
-            <h2 className="text-lg font-semibold text-gray-800 mb-3">Choose Occasion</h2>
-            <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+          <div className="mb-8">
+            <h2
+              style={{ fontFamily: "'Anton', sans-serif" }}
+              className="text-xl uppercase tracking-wider text-white mb-3"
+            >
+              Choose Occasion
+            </h2>
+            <div className="flex gap-2.5 overflow-x-auto pb-2 scrollbar-hide">
               {OCCASIONS.map(({ id, label, icon }) => (
                 <button
                   key={id}
                   onClick={() => setOccasion(id)}
-                  className={`flex flex-col items-center py-2.5 px-4 rounded-xl border-2 transition-all cursor-pointer whitespace-nowrap flex-shrink-0 ${
+                  className={`flex flex-col items-center py-3 px-5 rounded-2xl border transition-all cursor-pointer whitespace-nowrap flex-shrink-0 ${
                     occasion === id
-                      ? 'border-purple-500 bg-purple-50 text-purple-700'
-                      : 'border-gray-200 bg-white text-gray-600 hover:border-purple-300'
+                      ? 'border-[#F4845F] bg-[#F4845F]/15 text-[#F4845F] font-semibold shadow-lg shadow-[#F4845F]/10'
+                      : 'border-white/10 bg-white/[0.03] text-white/70 hover:border-white/30 hover:bg-white/[0.06]'
                   }`}
                 >
-                  <span className="text-lg">{icon}</span>
-                  <span className="text-xs font-medium mt-0.5">{label}</span>
+                  <span className="text-xl">{icon}</span>
+                  <span className="text-xs font-medium mt-1">{label}</span>
                 </button>
               ))}
             </div>
           </div>
 
           {loading && (
-            <div className="flex items-center gap-3 py-6 text-gray-500">
-              <div className="w-5 h-5 border-2 border-purple-200 border-t-purple-600 rounded-full animate-spin" />
+            <div className="flex items-center gap-3 py-8 text-white/70">
+              <div className="w-6 h-6 border-2 border-white/20 border-t-[#F4845F] rounded-full animate-spin" />
               Loading outfit recommendations…
             </div>
           )}
 
           {error && (
-            <div className="bg-red-50 border border-red-200 rounded-xl p-4 text-red-700 text-sm mb-4">{error}</div>
+            <div className="bg-red-500/10 border border-red-500/30 rounded-2xl p-4 text-red-300 text-sm mb-6">{error}</div>
           )}
 
           {recs && !loading && (
             <>
               {/* Dress Style Recommendations with visual silhouettes */}
               {dressStyles.length > 0 && (
-                <section className="mb-8">
-                  <h2 className="font-bold text-gray-900 mb-1 text-lg">
+                <section className="mb-10">
+                  <h2
+                    style={{ fontFamily: "'Anton', sans-serif" }}
+                    className="text-2xl uppercase tracking-wider text-white mb-1"
+                  >
                     {OCCASIONS.find(o => o.id === occasion)?.icon} Recommended Styles for{' '}
                     {OCCASIONS.find(o => o.id === occasion)?.label}
                   </h2>
                   {bodyInfo?.label && (
-                    <p className="text-sm text-gray-500 mb-4">
+                    <p className="text-sm text-white/60 mb-5">
                       Curated for <strong>{bodyInfo.label}</strong> body type · {season} season colors
                     </p>
                   )}
@@ -487,11 +550,14 @@ export default function ResultsPage({ faceShape, season, undertone, depth, skinH
 
               {/* Catalog items */}
               {recs.catalog_items && recs.catalog_items.length > 0 && (
-                <section className="mb-8">
-                  <h2 className="font-bold text-gray-900 mb-1 text-lg">
+                <section className="mb-10">
+                  <h2
+                    style={{ fontFamily: "'Anton', sans-serif" }}
+                    className="text-2xl uppercase tracking-wider text-white mb-1"
+                  >
                     Shop The Look — {OCCASIONS.find(o => o.id === occasion)?.label}
                   </h2>
-                  <p className="text-sm text-gray-500 mb-4">Items matched to your color season and body type</p>
+                  <p className="text-sm text-white/60 mb-5">Items matched to your color season and body type</p>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                     {recs.catalog_items.map((item) => (
                       <CatalogCard key={item.id} item={item} />
@@ -502,22 +568,39 @@ export default function ResultsPage({ faceShape, season, undertone, depth, skinH
 
               {/* Face Shape Style Tips */}
               {recs.face_advice && (
-                <section className="bg-white rounded-2xl p-5 shadow-sm border border-purple-100 mb-6">
-                  <h2 className="font-bold text-gray-900 mb-4 text-lg">
+                <section className="bg-white/[0.04] backdrop-blur-md rounded-3xl p-6 border border-white/10 mb-8">
+                  <h2
+                    style={{ fontFamily: "'Anton', sans-serif" }}
+                    className="text-2xl uppercase tracking-wider text-white mb-5"
+                  >
                     {SHAPE_ICONS[faceShape]} Face Shape Styling Tips — {faceShape?.charAt(0).toUpperCase() + faceShape?.slice(1)}
                   </h2>
-                  <div className="grid md:grid-cols-2 gap-4">
+                  <div className="grid md:grid-cols-2 gap-6">
                     {['necklines', 'hairstyles', 'glasses', 'earrings'].map((key) =>
                       recs.face_advice[key] && recs.face_advice[key].length > 0 ? (
                         <div key={key}>
-                          <h3 className="font-semibold text-purple-700 capitalize mb-2">{key}</h3>
-                          <ul className="space-y-1.5">
-                            {recs.face_advice[key].slice(0, 3).map((item) => (
-                              <li key={item.style} className="text-sm text-gray-600">
-                                <span className="font-medium text-gray-800">{item.style}</span>
-                                {item.reason && <span className="text-gray-400"> — {item.reason}</span>}
-                              </li>
-                            ))}
+                          <h3 className="font-semibold text-[#6EB5FF] capitalize mb-2.5 text-base">{key}</h3>
+                          {key === 'hairstyles' && hairLength && (
+                            <p className="text-xs text-white/50 mb-2">Your detected hair length: <strong className="text-white/80 capitalize">{hairLength}</strong></p>
+                          )}
+                          <ul className="space-y-2">
+                            {recs.face_advice[key].slice(0, 3).map((item) => {
+                              const matchesLength = key === 'hairstyles' && hairLength
+                                ? item.length_hint === 'any' || item.length_hint === hairLength
+                                : null
+                              return (
+                                <li key={item.style} className="text-sm text-white/80">
+                                  <span className="font-medium text-white">{item.style}</span>
+                                  {item.reason && <span className="text-white/50"> — {item.reason}</span>}
+                                  {matchesLength === true && (
+                                    <span className="ml-2 text-[10px] uppercase tracking-wider text-[#6BBF7A]">✓ matches your length</span>
+                                  )}
+                                  {matchesLength === false && (
+                                    <span className="ml-2 text-[10px] uppercase tracking-wider text-amber-300">needs {item.length_hint} hair</span>
+                                  )}
+                                </li>
+                              )
+                            })}
                           </ul>
                         </div>
                       ) : null

@@ -54,12 +54,10 @@ def _get_dress_styles_for_occasion(body_rules: dict, occasion: str, gender_group
     group_rules = body_rules.get(gender_group, {})
 
     # Pick the right body type key
-    if gender_group == "children":
-        bt_key = "child"
-    elif gender_group == "seniors":
+    if gender_group == "seniors":
         bt_key = "comfortable"
     else:
-        bt_key = body_type if body_type != "unknown" else list(group_rules.keys())[0]
+        bt_key = body_type if body_type in group_rules else (list(group_rules.keys())[0] if group_rules else body_type)
 
     bt_rules = group_rules.get(bt_key, {})
     occasions_map = bt_rules.get("occasions", {})
@@ -71,7 +69,9 @@ def _get_dress_styles_for_occasion(body_rules: dict, occasion: str, gender_group
     if occ == "casual":
         occ = "daily"
 
-    return occasions_map.get(occ, occasions_map.get("daily", []))
+    # An occasion key can exist but be explicitly empty (e.g. "office" for
+    # children) — fall back to daily styles rather than showing nothing.
+    return occasions_map.get(occ) or occasions_map.get("daily", [])
 
 
 def get_recommendations(face_shape: str, season: str, occasion: str,
@@ -91,28 +91,42 @@ def get_recommendations(face_shape: str, season: str, occasion: str,
 
     # Get body type rules
     group_rules = _body_rules.get(gender_group, _body_rules.get("women", {}))
-    if gender_group == "children":
-        bt_key = "child"
-    elif gender_group == "seniors":
+    if gender_group == "seniors":
         bt_key = "comfortable"
     else:
-        bt_key = body_type if body_type != "unknown" and body_type in group_rules else (list(group_rules.keys())[0] if group_rules else "hourglass")
+        bt_key = body_type if body_type in group_rules else (list(group_rules.keys())[0] if group_rules else "hourglass")
 
     body_type_info = group_rules.get(bt_key, {})
 
     # Get recommended dress styles for this occasion + body type
     dress_styles = _get_dress_styles_for_occasion(_body_rules, occ_lower, gender_group, bt_key)
 
-    # Filter catalog by occasion and gender
-    if occ_lower:
-        filtered = [
+    # Filter catalog by occasion and gender. "all" on an item means "unisex
+    # adult wear" (men or women) — it should not pull adult items like a
+    # trench coat or blazer into children's/seniors' recommendations, so
+    # those two groups only match items explicitly tagged for them.
+    def _gender_matches(item_gender: str) -> bool:
+        if gender_group in ("children", "seniors"):
+            return item_gender == gender_group
+        return item_gender in (gender_group, "all") or gender_group == "all"
+
+    def _by_occasion(occ: str) -> list:
+        # Also match the raw (pre-normalization) occasion string, since some
+        # catalog items still carry legacy tags like "work"/"casual".
+        return [
             i for i in _catalog
-            if (occ_lower in i.get("occasions", []) or
-                occasion.lower() in i.get("occasions", []))
-            and (i.get("gender", "all") in (gender_group, "all") or gender_group == "all")
+            if (occ in i.get("occasions", []) or occasion.lower() in i.get("occasions", []))
+            and _gender_matches(i.get("gender", "all"))
         ]
+
+    if occ_lower:
+        filtered = _by_occasion(occ_lower)
+        # Some groups (e.g. children) have no items for a given occasion
+        # (office) — fall back to daily wear rather than showing nothing.
+        if not filtered and occ_lower != "daily":
+            filtered = _by_occasion("daily")
     else:
-        filtered = [i for i in _catalog if i.get("gender", "all") in (gender_group, "all")]
+        filtered = [i for i in _catalog if _gender_matches(i.get("gender", "all"))]
 
     # Further filter by body type compatibility if tags are available
     if body_type and body_type != "unknown":
@@ -122,6 +136,11 @@ def get_recommendations(face_shape: str, season: str, occasion: str,
         ]
         if body_filtered:
             filtered = body_filtered
+        elif gender_group == "children":
+            # For children, body_type ("boy"/"girl") is a strict identity
+            # match, not a soft shape preference — never fall back to the
+            # other gender's tagged items, only to genuinely unisex ones.
+            filtered = [i for i in filtered if not i.get("body_types")]
 
     # Rank by color palette score
     scored = [

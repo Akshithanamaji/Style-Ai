@@ -2,201 +2,722 @@
   "women": {
     "hourglass": {
       "label": "Hourglass",
-      "icon": "⌛",
-      "emoji_icon": "⌛",
+      "icon": "\u231b",
+      "emoji_icon": "\u231b",
       "description": "Balanced shoulders and hips with a defined, narrower waist",
       "tips": "Highlight your natural waist with belted styles and wrap dresses. Your balanced proportions suit most silhouettes beautifully.",
-      "best_silhouettes": ["Wrap Dress", "Bodycon", "Fit & Flare", "A-Line", "Pencil Dress"],
-      "avoid": ["Boxy oversized shapes", "Shapeless tunics that hide the waist"],
-      "best_necklines": ["V-neck", "Sweetheart", "Scoop neck"],
-      "best_fabrics": ["Jersey", "Knit", "Crepe", "Satin"],
+      "best_silhouettes": [
+        "Wrap Dress",
+        "Bodycon",
+        "Fit & Flare",
+        "A-Line",
+        "Pencil Dress"
+      ],
+      "avoid": [
+        "Boxy oversized shapes",
+        "Shapeless tunics that hide the waist"
+      ],
+      "best_necklines": [
+        "V-neck",
+        "Sweetheart",
+        "Scoop neck"
+      ],
+      "best_fabrics": [
+        "Jersey",
+        "Knit",
+        "Crepe",
+        "Satin"
+      ],
       "occasions": {
-        "daily":   ["Wrap Dress", "Shirt Dress", "Midi Skirt + Fitted Top"],
-        "office":  ["Pencil Skirt + Blazer", "Wrap Dress", "Tailored Trouser + Fitted Blouse"],
-        "college": ["Jeans + Crop Top", "Shirt Dress", "Midi Skirt + T-Shirt"],
-        "party":   ["Bodycon Dress", "Fit & Flare", "Midi Dress"],
-        "wedding": ["A-Line Gown", "Fit & Flare Gown", "Saree"],
-        "festive": ["Anarkali", "Lehenga", "Saree"],
-        "formal":  ["Sheath Dress", "Pencil Skirt + Blazer"]
+        "daily": [
+          "Wrap Dress",
+          "Shirt Dress",
+          "Midi Skirt + Fitted Top"
+        ],
+        "office": [
+          "Pencil Skirt + Blazer",
+          "Wrap Dress",
+          "Tailored Trouser + Fitted Blouse"
+        ],
+        "college": [
+          "Jeans + Crop Top",
+          "Shirt Dress",
+          "Midi Skirt + T-Shirt"
+        ],
+        "party": [
+          "Bodycon Dress",
+          "Fit & Flare",
+          "Midi Dress"
+        ],
+        "wedding": [
+          "A-Line Gown",
+          "Fit & Flare Gown",
+          "Saree"
+        ],
+        "festive": [
+          "Anarkali",
+          "Lehenga",
+          "Saree"
+        ],
+        "formal": [
+          "Sheath Dress",
+          "Pencil Skirt + Blazer"
+        ],
+        "night_wear": [
+          "Satin Pajama Set",
+          "Nightgown with Waist Tie",
+          "Shorts + Cami Set"
+        ],
+        "functions": [
+          "Saree",
+          "Anarkali Suit",
+          "Fitted Kurta Set"
+        ]
       }
     },
     "pear": {
       "label": "Pear",
-      "icon": "🍐",
-      "emoji_icon": "🍐",
+      "icon": "\ud83c\udf50",
+      "emoji_icon": "\ud83c\udf50",
       "description": "Hips wider than shoulders with a well-defined waist",
       "tips": "Draw attention upward with statement tops and off-shoulder styles. A-line skirts and flared bottoms beautifully balance the hip-to-shoulder ratio.",
-      "best_silhouettes": ["A-Line Dress", "Empire Waist", "Fit & Flare", "Wrap Dress"],
-      "avoid": ["Pencil skirts ending at widest hip", "Skinny pants", "Low hip pockets"],
-      "best_necklines": ["Off-shoulder", "Boat neck", "Square neck", "Statement necklines"],
-      "best_fabrics": ["Light fabrics for lower body", "Structured fabrics on top"],
+      "best_silhouettes": [
+        "A-Line Dress",
+        "Empire Waist",
+        "Fit & Flare",
+        "Wrap Dress"
+      ],
+      "avoid": [
+        "Pencil skirts ending at widest hip",
+        "Skinny pants",
+        "Low hip pockets"
+      ],
+      "best_necklines": [
+        "Off-shoulder",
+        "Boat neck",
+        "Square neck",
+        "Statement necklines"
+      ],
+      "best_fabrics": [
+        "Light fabrics for lower body",
+        "Structured fabrics on top"
+      ],
       "occasions": {
-        "daily":   ["Empire Waist Top + Flared Skirt", "A-Line Midi Dress", "Off-Shoulder + Wide-Leg Pants"],
-        "office":  ["A-Line Skirt + Blazer", "Wrap Dress", "Empire Waist Dress"],
-        "college": ["A-Line Skirt + Graphic Tee", "Off-Shoulder Top + Wide-Leg Jeans"],
-        "party":   ["Fit & Flare Dress", "Empire Waist Party Dress", "A-Line Dress"],
-        "wedding": ["A-Line Gown", "Saree", "Anarkali"],
-        "festive": ["Anarkali", "Lehenga with Statement Blouse"],
-        "formal":  ["A-Line Skirt + Structured Blazer", "Empire Waist Dress"]
+        "daily": [
+          "Empire Waist Top + Flared Skirt",
+          "A-Line Midi Dress",
+          "Off-Shoulder + Wide-Leg Pants"
+        ],
+        "office": [
+          "A-Line Skirt + Blazer",
+          "Wrap Dress",
+          "Empire Waist Dress"
+        ],
+        "college": [
+          "A-Line Skirt + Graphic Tee",
+          "Off-Shoulder Top + Wide-Leg Jeans"
+        ],
+        "party": [
+          "Fit & Flare Dress",
+          "Empire Waist Party Dress",
+          "A-Line Dress"
+        ],
+        "wedding": [
+          "A-Line Gown",
+          "Saree",
+          "Anarkali"
+        ],
+        "festive": [
+          "Anarkali",
+          "Lehenga with Statement Blouse"
+        ],
+        "formal": [
+          "A-Line Skirt + Structured Blazer",
+          "Empire Waist Dress"
+        ],
+        "night_wear": [
+          "A-Line Nightgown",
+          "Oversized Sleep Tee + Shorts",
+          "Pajama Set"
+        ],
+        "functions": [
+          "A-Line Kurta Set",
+          "Anarkali Suit",
+          "Saree"
+        ]
       }
     },
     "apple": {
       "label": "Apple",
-      "icon": "🍎",
-      "emoji_icon": "🍎",
+      "icon": "\ud83c\udf4e",
+      "emoji_icon": "\ud83c\udf4e",
       "description": "Fuller midsection with narrower hips and shoulders, defined legs",
       "tips": "Create definition with V-necklines and empire waist styles. Wrap dresses and A-line silhouettes are very flattering. Show off your great legs!",
-      "best_silhouettes": ["Empire Waist Dress", "A-Line Dress", "Wrap Dress", "Shift Dress"],
-      "avoid": ["Tight bodycon at midsection", "High-waisted bottoms", "Cropped jackets"],
-      "best_necklines": ["V-neck", "Deep V", "Scoop neck"],
-      "best_fabrics": ["Flowy fabrics", "Draping fabrics", "Jersey"],
+      "best_silhouettes": [
+        "Empire Waist Dress",
+        "A-Line Dress",
+        "Wrap Dress",
+        "Shift Dress"
+      ],
+      "avoid": [
+        "Tight bodycon at midsection",
+        "High-waisted bottoms",
+        "Cropped jackets"
+      ],
+      "best_necklines": [
+        "V-neck",
+        "Deep V",
+        "Scoop neck"
+      ],
+      "best_fabrics": [
+        "Flowy fabrics",
+        "Draping fabrics",
+        "Jersey"
+      ],
       "occasions": {
-        "daily":   ["Empire Waist Dress", "Wrap Dress", "Tunic + Leggings"],
-        "office":  ["Wrap Dress", "Empire Blouse + Straight Pants"],
-        "college": ["Tunic + Leggings", "Shirt Dress"],
-        "party":   ["Empire Waist Dress", "Wrap Dress"],
-        "wedding": ["A-Line Gown", "Empire Gown", "Anarkali"],
-        "festive": ["Anarkali", "Empire Waist Kurta + Palazzo"],
-        "formal":  ["Empire Wrap Dress", "A-Line Dress"]
+        "daily": [
+          "Empire Waist Dress",
+          "Wrap Dress",
+          "Tunic + Leggings"
+        ],
+        "office": [
+          "Wrap Dress",
+          "Empire Blouse + Straight Pants"
+        ],
+        "college": [
+          "Tunic + Leggings",
+          "Shirt Dress"
+        ],
+        "party": [
+          "Empire Waist Dress",
+          "Wrap Dress"
+        ],
+        "wedding": [
+          "A-Line Gown",
+          "Empire Gown",
+          "Anarkali"
+        ],
+        "festive": [
+          "Anarkali",
+          "Empire Waist Kurta + Palazzo"
+        ],
+        "formal": [
+          "Empire Wrap Dress",
+          "A-Line Dress"
+        ],
+        "night_wear": [
+          "Loose Nightgown",
+          "Relaxed Pajama Set",
+          "Sleep Shirt"
+        ],
+        "functions": [
+          "Straight Kurta Set",
+          "Flowy Anarkali",
+          "Saree"
+        ]
       }
     },
     "rectangle": {
       "label": "Rectangle",
-      "icon": "▭",
-      "emoji_icon": "▭",
-      "description": "Shoulder, waist and hip measurements are similar — athletic build",
+      "icon": "\u25ad",
+      "emoji_icon": "\u25ad",
+      "description": "Shoulder, waist and hip measurements are similar \u2014 athletic build",
       "tips": "Create curves with peplum tops, ruffles, and belted styles. Layer with cropped jackets or cardigans to add dimension and shape.",
-      "best_silhouettes": ["Peplum Top", "Ruffled Dress", "Layered Looks", "Wrap Dress", "Fit & Flare"],
-      "avoid": ["Straight tube dresses", "Shapeless sacks", "Very boxy fits"],
-      "best_necklines": ["Ruffled necklines", "Cowl neck", "Halter"],
-      "best_fabrics": ["Textured fabrics", "Ruffled materials", "Structured fabrics"],
+      "best_silhouettes": [
+        "Peplum Top",
+        "Ruffled Dress",
+        "Layered Looks",
+        "Wrap Dress",
+        "Fit & Flare"
+      ],
+      "avoid": [
+        "Straight tube dresses",
+        "Shapeless sacks",
+        "Very boxy fits"
+      ],
+      "best_necklines": [
+        "Ruffled necklines",
+        "Cowl neck",
+        "Halter"
+      ],
+      "best_fabrics": [
+        "Textured fabrics",
+        "Ruffled materials",
+        "Structured fabrics"
+      ],
       "occasions": {
-        "daily":   ["Flared Dress", "Peplum Top + Jeans", "Layered Look"],
-        "office":  ["Peplum Blazer", "Wrap Dress", "Structured Dress + Belt"],
-        "college": ["Peplum Crop + Jeans", "Bodysuit + Flared Skirt"],
-        "party":   ["Ruffled Dress", "Wrap Dress", "Fit & Flare"],
-        "wedding": ["Flare Gown", "A-Line Gown", "Lehenga"],
-        "festive": ["Lehenga", "Anarkali", "Peplum Kurta + Palazzo"],
-        "formal":  ["Peplum Dress", "Structured Wrap Dress"]
+        "daily": [
+          "Flared Dress",
+          "Peplum Top + Jeans",
+          "Layered Look"
+        ],
+        "office": [
+          "Peplum Blazer",
+          "Wrap Dress",
+          "Structured Dress + Belt"
+        ],
+        "college": [
+          "Peplum Crop + Jeans",
+          "Bodysuit + Flared Skirt"
+        ],
+        "party": [
+          "Ruffled Dress",
+          "Wrap Dress",
+          "Fit & Flare"
+        ],
+        "wedding": [
+          "Flare Gown",
+          "A-Line Gown",
+          "Lehenga"
+        ],
+        "festive": [
+          "Lehenga",
+          "Anarkali",
+          "Peplum Kurta + Palazzo"
+        ],
+        "formal": [
+          "Peplum Dress",
+          "Structured Wrap Dress"
+        ],
+        "night_wear": [
+          "Cami + Shorts Set",
+          "Classic Pajama Set",
+          "Nightgown"
+        ],
+        "functions": [
+          "Peplum Kurta Set",
+          "Anarkali Suit",
+          "Saree"
+        ]
       }
     },
     "inverted_triangle": {
       "label": "Inverted Triangle",
-      "icon": "🔺",
-      "emoji_icon": "🔺",
-      "description": "Shoulders broader than hips — strong, athletic upper body",
+      "icon": "\ud83d\udd3a",
+      "emoji_icon": "\ud83d\udd3a",
+      "description": "Shoulders broader than hips \u2014 strong, athletic upper body",
       "tips": "Balance broad shoulders with A-line or flared silhouettes below the waist. Wide-leg pants and full skirts add volume where needed. V-necks draw the eye inward.",
-      "best_silhouettes": ["A-Line Dress", "Wide-Leg Pants + V-Neck", "Flared Skirt", "Slip Dress"],
-      "avoid": ["Puffed sleeves", "Boat necks", "Shoulder pads", "Top-heavy patterns"],
-      "best_necklines": ["V-neck", "Scoop neck", "Deep V"],
-      "best_fabrics": ["Light fabrics on top", "Structured fabrics for bottom flare"],
+      "best_silhouettes": [
+        "A-Line Dress",
+        "Wide-Leg Pants + V-Neck",
+        "Flared Skirt",
+        "Slip Dress"
+      ],
+      "avoid": [
+        "Puffed sleeves",
+        "Boat necks",
+        "Shoulder pads",
+        "Top-heavy patterns"
+      ],
+      "best_necklines": [
+        "V-neck",
+        "Scoop neck",
+        "Deep V"
+      ],
+      "best_fabrics": [
+        "Light fabrics on top",
+        "Structured fabrics for bottom flare"
+      ],
       "occasions": {
-        "daily":   ["Wide-Leg Pants + Fitted V-Neck Top", "A-Line Skirt + Simple Top"],
-        "office":  ["Straight Pants + Fitted Blouse V-Neck", "Sheath Dress"],
-        "college": ["Flared Jeans + V-Neck", "A-Line Skirt + Simple Top"],
-        "party":   ["A-Line Dress", "Slip Dress with Flare"],
-        "wedding": ["A-Line Gown", "Saree with Narrow Blouse"],
-        "festive": ["Anarkali with V-Neck", "Lehenga"],
-        "formal":  ["Sheath Dress", "A-Line Skirt + Blazer"]
+        "daily": [
+          "Wide-Leg Pants + Fitted V-Neck Top",
+          "A-Line Skirt + Simple Top"
+        ],
+        "office": [
+          "Straight Pants + Fitted Blouse V-Neck",
+          "Sheath Dress"
+        ],
+        "college": [
+          "Flared Jeans + V-Neck",
+          "A-Line Skirt + Simple Top"
+        ],
+        "party": [
+          "A-Line Dress",
+          "Slip Dress with Flare"
+        ],
+        "wedding": [
+          "A-Line Gown",
+          "Saree with Narrow Blouse"
+        ],
+        "festive": [
+          "Anarkali with V-Neck",
+          "Lehenga"
+        ],
+        "formal": [
+          "Sheath Dress",
+          "A-Line Skirt + Blazer"
+        ],
+        "night_wear": [
+          "Wide-Leg Pajama Set",
+          "Relaxed Nightgown",
+          "Sleep Shirt + Shorts"
+        ],
+        "functions": [
+          "A-Line Kurta Set",
+          "Flared Anarkali",
+          "Saree"
+        ]
       }
     }
   },
   "men": {
     "athletic": {
       "label": "Athletic / V-Shape",
-      "icon": "🏋️",
-      "emoji_icon": "🏋️",
+      "icon": "\ud83c\udfcb\ufe0f",
+      "emoji_icon": "\ud83c\udfcb\ufe0f",
       "description": "Broad shoulders, narrow waist, well-defined physique",
       "tips": "Slim or regular fit works best. Avoid extra slim that's too tight at shoulders. Structured blazers and tailored suits showcase your build beautifully.",
-      "best_fits": ["Well-tailored", "Slim-fit", "Structured"],
-      "avoid": ["Too-tight shirts that stretch at shoulders", "Boxy oversized fits"],
-      "best_necklines": ["Crew neck", "V-neck", "Open collar"],
+      "best_fits": [
+        "Well-tailored",
+        "Slim-fit",
+        "Structured"
+      ],
+      "avoid": [
+        "Too-tight shirts that stretch at shoulders",
+        "Boxy oversized fits"
+      ],
+      "best_necklines": [
+        "Crew neck",
+        "V-neck",
+        "Open collar"
+      ],
       "occasions": {
-        "daily":   ["Fitted Polo + Chinos", "Slim Jeans + Fitted T-Shirt"],
-        "office":  ["Slim-Fit Suit", "Tailored Shirt + Chinos"],
-        "college": ["Fitted Tee + Jeans", "Slim Polo + Chinos"],
-        "party":   ["Slim Dress Shirt", "Fitted Blazer + Dark Jeans"],
-        "wedding": ["Tailored Suit", "Sherwani"],
-        "festive": ["Fitted Kurta + Churidar", "Jodhpuri Suit"],
-        "formal":  ["Slim Suit", "Tailored Tuxedo"]
+        "daily": [
+          "Fitted Polo + Chinos",
+          "Slim Jeans + Fitted T-Shirt"
+        ],
+        "office": [
+          "Slim-Fit Suit",
+          "Tailored Shirt + Chinos"
+        ],
+        "college": [
+          "Fitted Tee + Jeans",
+          "Slim Polo + Chinos"
+        ],
+        "party": [
+          "Slim Dress Shirt",
+          "Fitted Blazer + Dark Jeans"
+        ],
+        "wedding": [
+          "Tailored Suit",
+          "Sherwani"
+        ],
+        "festive": [
+          "Fitted Kurta + Churidar",
+          "Jodhpuri Suit"
+        ],
+        "formal": [
+          "Slim Suit",
+          "Tailored Tuxedo"
+        ],
+        "night_wear": [
+          "Cotton Pajama Set",
+          "Sleep Shorts + Tee",
+          "Lounge Pants + Tee"
+        ],
+        "functions": [
+          "Kurta Pajama",
+          "Nehru Jacket + Kurta",
+          "Bandhgala Suit"
+        ]
       }
     },
     "rectangle": {
       "label": "Rectangle",
-      "icon": "▭",
-      "emoji_icon": "▭",
-      "description": "Shoulders and hips roughly the same width — average build",
+      "icon": "\u25ad",
+      "emoji_icon": "\u25ad",
+      "description": "Shoulders and hips roughly the same width \u2014 average build",
       "tips": "Layering creates visual interest and dimension. Structured jackets and blazers add shape. Shirts with patterns or textures work well.",
-      "best_fits": ["Regular-fit", "Layered looks", "Structured shoulders"],
-      "avoid": ["Shapeless oversized fits"],
-      "best_necklines": ["Open collar", "Crew neck", "V-neck"],
+      "best_fits": [
+        "Regular-fit",
+        "Layered looks",
+        "Structured shoulders"
+      ],
+      "avoid": [
+        "Shapeless oversized fits"
+      ],
+      "best_necklines": [
+        "Open collar",
+        "Crew neck",
+        "V-neck"
+      ],
       "occasions": {
-        "daily":   ["Layered Tee + Open Shirt", "Chinos + Shirt"],
-        "office":  ["Structured Blazer + Trousers", "Regular-Fit Suit"],
-        "college": ["Layered Look + Jeans", "Button-Down + Chinos"],
-        "party":   ["Blazer + Shirt + Dark Jeans", "Textured Shirt + Trousers"],
-        "wedding": ["Suit with Layering", "Sherwani"],
-        "festive": ["Layered Kurta Set", "Nehru Jacket + Kurta"],
-        "formal":  ["Classic Suit", "Structured Blazer"]
+        "daily": [
+          "Layered Tee + Open Shirt",
+          "Chinos + Shirt"
+        ],
+        "office": [
+          "Structured Blazer + Trousers",
+          "Regular-Fit Suit"
+        ],
+        "college": [
+          "Layered Look + Jeans",
+          "Button-Down + Chinos"
+        ],
+        "party": [
+          "Blazer + Shirt + Dark Jeans",
+          "Textured Shirt + Trousers"
+        ],
+        "wedding": [
+          "Suit with Layering",
+          "Sherwani"
+        ],
+        "festive": [
+          "Layered Kurta Set",
+          "Nehru Jacket + Kurta"
+        ],
+        "formal": [
+          "Classic Suit",
+          "Structured Blazer"
+        ],
+        "night_wear": [
+          "Cotton Pajama Set",
+          "Lounge Pants + Tee",
+          "Sleep Shorts + Tee"
+        ],
+        "functions": [
+          "Kurta Pajama",
+          "Nehru Jacket + Kurta",
+          "Bandhgala Suit"
+        ]
       }
     },
     "oval": {
       "label": "Oval",
-      "icon": "⭕",
-      "emoji_icon": "⭕",
+      "icon": "\u2b55",
+      "emoji_icon": "\u2b55",
       "description": "Broader midsection, shoulders and hips narrower",
       "tips": "Vertical stripes and dark colors create a slimming effect. Straight or slightly tapered trousers elongate the figure. V-necks draw the eye upward.",
-      "best_fits": ["Straight-leg trousers", "Dark colors", "Vertical patterns"],
-      "avoid": ["Horizontal stripes", "Tight-fitting around midsection", "Tapered trousers"],
-      "best_necklines": ["V-neck", "Open collar"],
+      "best_fits": [
+        "Straight-leg trousers",
+        "Dark colors",
+        "Vertical patterns"
+      ],
+      "avoid": [
+        "Horizontal stripes",
+        "Tight-fitting around midsection",
+        "Tapered trousers"
+      ],
+      "best_necklines": [
+        "V-neck",
+        "Open collar"
+      ],
       "occasions": {
-        "daily":   ["Straight-Leg Jeans + V-Neck", "Dark Chinos + Button-Down"],
-        "office":  ["Dark Trousers + Fitted Shirt", "Slim Blazer + Straight Pants"],
-        "college": ["Straight Jeans + V-Neck Tee", "Dark Chinos + Polo"],
-        "party":   ["Dark Slim Trousers + Shirt", "Blazer + Dark Pants"],
-        "wedding": ["Well-Tailored Suit", "Sherwani"],
-        "festive": ["Long Kurta + Straight Pants", "Kurta with Jacket"],
-        "formal":  ["Dark Suit", "Straight Pants + Blazer"]
+        "daily": [
+          "Straight-Leg Jeans + V-Neck",
+          "Dark Chinos + Button-Down"
+        ],
+        "office": [
+          "Dark Trousers + Fitted Shirt",
+          "Slim Blazer + Straight Pants"
+        ],
+        "college": [
+          "Straight Jeans + V-Neck Tee",
+          "Dark Chinos + Polo"
+        ],
+        "party": [
+          "Dark Slim Trousers + Shirt",
+          "Blazer + Dark Pants"
+        ],
+        "wedding": [
+          "Well-Tailored Suit",
+          "Sherwani"
+        ],
+        "festive": [
+          "Long Kurta + Straight Pants",
+          "Kurta with Jacket"
+        ],
+        "formal": [
+          "Dark Suit",
+          "Straight Pants + Blazer"
+        ],
+        "night_wear": [
+          "Relaxed Pajama Set",
+          "Loose Sleep Shirt + Pants",
+          "Lounge Pants + Tee"
+        ],
+        "functions": [
+          "Kurta Pajama",
+          "Nehru Jacket + Kurta",
+          "Bandhgala Suit"
+        ]
       }
     }
   },
   "children": {
-    "child": {
-      "label": "Children's Style",
-      "icon": "🧒",
-      "emoji_icon": "🧒",
-      "description": "Age-appropriate, comfortable, and playful outfits that allow free movement",
-      "tips": "Prioritize comfort and ease of movement. Bright colors and fun patterns are great. Choose durable fabrics that can handle active play.",
-      "best_fits": ["Comfortable", "Stretchy", "Easy-to-wear"],
-      "avoid": ["Constricting fits", "Complicated fastenings", "Dry-clean only fabrics"],
+    "girl": {
+      "label": "Girls' Style",
+      "icon": "\ud83d\udc67",
+      "emoji_icon": "\ud83d\udc67",
+      "description": "Playful, comfortable outfits for active, growing girls",
+      "tips": "Pick soft, breathable fabrics that move with play. Let her have fun with color and sparkle for special days, but keep everyday wear simple enough for her to put on and wash easily.",
+      "best_fits": [
+        "Cotton dresses",
+        "Leggings + tunic",
+        "A-line skirts",
+        "Soft knits"
+      ],
+      "avoid": [
+        "Tight waistbands",
+        "Scratchy sequins next to skin",
+        "Complicated zips/buttons a child can't manage"
+      ],
       "occasions": {
-        "daily":   ["Cotton Tee + Shorts", "Comfortable Dress", "Leggings + Top"],
-        "office":  [],
-        "college": ["Smart Casual", "School Uniform Style"],
-        "party":   ["Party Dress", "Smart Kids Outfit"],
-        "wedding": ["Traditional Kids Outfit", "Formal Dress"],
-        "festive": ["Traditional Kids Outfit", "Bright Festive Outfit"],
-        "formal":  ["Formal Kids Outfit"]
+        "daily": [
+          "Cotton Tee + Shorts",
+          "Printed Frock",
+          "Leggings + Tunic"
+        ],
+        "office": [],
+        "college": [
+          "School Uniform Style",
+          "Smart Casual Skirt Set"
+        ],
+        "party": [
+          "Party Dress",
+          "Tutu Dress",
+          "Smart Kids Outfit"
+        ],
+        "wedding": [
+          "Lehenga Choli (Kids)",
+          "Anarkali Frock",
+          "Traditional Kids Outfit"
+        ],
+        "festive": [
+          "Traditional Kids Outfit",
+          "Bright Festive Frock",
+          "Ethnic Skirt Set"
+        ],
+        "formal": [
+          "Formal Party Dress",
+          "Pinafore Set"
+        ],
+        "night_wear": [
+          "Cotton Nightgown",
+          "Pajama Set",
+          "Sleep Shirt + Shorts"
+        ],
+        "functions": [
+          "Anarkali Frock",
+          "Lehenga Choli (Kids)",
+          "Traditional Kids Outfit"
+        ]
+      }
+    },
+    "boy": {
+      "label": "Boys' Style",
+      "icon": "\ud83d\udc66",
+      "emoji_icon": "\ud83d\udc66",
+      "description": "Comfortable, durable outfits built for active play",
+      "tips": "Prioritize stretch and durability for everyday play. Keep festive wear simple to put on so he can move and play comfortably even when dressed up.",
+      "best_fits": [
+        "Cotton tees",
+        "Elastic-waist shorts/pants",
+        "Soft knits"
+      ],
+      "avoid": [
+        "Stiff collars for daily wear",
+        "Tight waistbands",
+        "Fussy fastenings"
+      ],
+      "occasions": {
+        "daily": [
+          "Cotton Tee + Shorts",
+          "Jeans + T-Shirt",
+          "Track Set"
+        ],
+        "office": [],
+        "college": [
+          "School Uniform Style",
+          "Smart Casual Shirt + Pants"
+        ],
+        "party": [
+          "Shirt + Chinos",
+          "Smart Kids Outfit"
+        ],
+        "wedding": [
+          "Kurta Pajama (Kids)",
+          "Mini Sherwani",
+          "Traditional Kids Outfit"
+        ],
+        "festive": [
+          "Traditional Kids Outfit",
+          "Kurta Pajama (Kids)",
+          "Ethnic Shirt Set"
+        ],
+        "formal": [
+          "Shirt + Blazer (Kids)",
+          "Formal Shirt + Trousers"
+        ],
+        "night_wear": [
+          "Cotton Nightsuit",
+          "Pajama Set",
+          "Sleep Shirt + Shorts"
+        ],
+        "functions": [
+          "Kurta Pajama (Kids)",
+          "Nehru Jacket Set (Kids)",
+          "Traditional Kids Outfit"
+        ]
       }
     }
   },
   "seniors": {
     "comfortable": {
       "label": "Classic & Comfortable",
-      "icon": "🌸",
-      "emoji_icon": "🌸",
+      "icon": "\ud83c\udf38",
+      "emoji_icon": "\ud83c\udf38",
       "description": "Comfortable fit with elegant, timeless classic styling",
       "tips": "Choose comfortable fabrics with some stretch. Classic styles in quality fabrics look elegant and are comfortable. Easy-care materials are practical.",
-      "best_fits": ["Relaxed-fit", "Easy-care", "Comfortable waistbands"],
-      "avoid": ["Very tight fits", "Complex fastenings", "Very short hemlines"],
+      "best_fits": [
+        "Relaxed-fit",
+        "Easy-care",
+        "Comfortable waistbands"
+      ],
+      "avoid": [
+        "Very tight fits",
+        "Complex fastenings",
+        "Very short hemlines"
+      ],
       "occasions": {
-        "daily":   ["Comfortable Salwar Kameez", "Cotton Pants + Shirt", "House Dress"],
-        "office":  ["Classic Saree", "Formal Pants + Shirt", "Simple Salwar"],
+        "daily": [
+          "Comfortable Salwar Kameez",
+          "Cotton Pants + Shirt",
+          "House Dress"
+        ],
+        "office": [
+          "Classic Saree",
+          "Formal Pants + Shirt",
+          "Simple Salwar"
+        ],
         "college": [],
-        "party":   ["Elegant Saree", "Party Salwar Kameez", "Formal Kurta"],
-        "wedding": ["Silk Saree", "Sherwani", "Traditional Outfit"],
-        "festive": ["Silk Saree", "Traditional Festive Outfit"],
-        "formal":  ["Classic Formal Outfit", "Elegant Saree"]
+        "party": [
+          "Elegant Saree",
+          "Party Salwar Kameez",
+          "Formal Kurta"
+        ],
+        "wedding": [
+          "Silk Saree",
+          "Sherwani",
+          "Traditional Outfit"
+        ],
+        "festive": [
+          "Silk Saree",
+          "Traditional Festive Outfit"
+        ],
+        "formal": [
+          "Classic Formal Outfit",
+          "Elegant Saree"
+        ],
+        "night_wear": [
+          "Soft Cotton Nightsuit",
+          "Easy-Wear Nightgown",
+          "Button-Front Sleep Set"
+        ],
+        "functions": [
+          "Comfortable Saree",
+          "Simple Kurta Set"
+        ]
       }
     }
   }

@@ -7,6 +7,7 @@ from pathlib import Path
 from backend.api.analyze import router as analyze_router
 from backend.api.recommend import router as recommend_router
 from backend.api.chat import router as chat_router
+from backend.api.auth import router as auth_router
 
 load_dotenv()
 
@@ -15,6 +16,7 @@ app = FastAPI(title="AI Fashion Stylist API", version="1.0.0")
 app.include_router(analyze_router, prefix="/api")
 app.include_router(recommend_router, prefix="/api")
 app.include_router(chat_router, prefix="/api")
+app.include_router(auth_router, prefix="/api/auth")
 
 
 @app.get("/health")

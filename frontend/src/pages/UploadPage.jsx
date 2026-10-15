@@ -1,4 +1,5 @@
 import { useRef, useState, useCallback, useEffect } from 'react'
+import { Sparkles, UploadCloud, Camera, CheckCircle2 } from 'lucide-react'
 import { detectLandmarks, prewarmFaceLandmarker } from '../lib/faceMesh'
 import LandmarkCanvas from '../components/LandmarkCanvas'
 
@@ -123,60 +124,113 @@ export default function UploadPage({ onNext }) {
     if (fileInputRef.current) fileInputRef.current.value = ''
   }
 
+  const GRAIN_URI =
+    `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E` +
+    `%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E` +
+    `%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E` +
+    `%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E")`
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-rose-50">
+    <div className="min-h-screen bg-[#111216] text-white relative overflow-hidden" style={{ fontFamily: "'Inter', sans-serif" }}>
+      {/* Grain overlay */}
+      <div
+        aria-hidden="true"
+        className="fixed inset-0 pointer-events-none z-50"
+        style={{
+          backgroundImage: GRAIN_URI,
+          backgroundSize: '200px 200px',
+          backgroundRepeat: 'repeat',
+          opacity: 0.35,
+        }}
+      />
+
+      {/* Ambient background glows */}
+      <div
+        aria-hidden="true"
+        className="absolute top-0 right-1/4 w-96 h-96 rounded-full blur-[140px] pointer-events-none"
+        style={{ background: 'rgba(244, 132, 95, 0.1)' }}
+      />
+      <div
+        aria-hidden="true"
+        className="absolute bottom-10 left-1/4 w-96 h-96 rounded-full blur-[140px] pointer-events-none"
+        style={{ background: 'rgba(110, 181, 255, 0.1)' }}
+      />
+
       {/* Header */}
-      <header className="flex items-center gap-3 px-6 py-4 bg-white/70 backdrop-blur-sm border-b border-purple-100">
-        <span className="text-xl">✨</span>
-        <span className="font-semibold text-purple-800">AI Fashion Stylist</span>
-        <span className="ml-2 text-sm text-gray-400">Step 1 of 5 — Upload Photo</span>
+      <header className="relative z-20 flex items-center justify-between px-6 py-4 bg-[#14151B]/80 backdrop-blur-md border-b border-white/10">
+        <div className="flex items-center gap-3">
+          <Sparkles size={18} className="text-[#F4845F]" />
+          <span
+            style={{ fontFamily: "'Anton', sans-serif" }}
+            className="text-lg tracking-wider uppercase text-white"
+          >
+            AI Fashion Stylist
+          </span>
+        </div>
+        <div className="flex items-center gap-3">
+          <span className="text-xs tracking-wider uppercase text-white/50 font-medium">Step 1 of 5 — Upload Photo</span>
+          {/* Pill step indicator */}
+          <div className="flex items-center gap-1.5">
+            <span className="w-5 h-2 rounded-full bg-[#F4845F]" />
+            <span className="w-2 h-2 rounded-full bg-white/20" />
+            <span className="w-2 h-2 rounded-full bg-white/20" />
+            <span className="w-2 h-2 rounded-full bg-white/20" />
+            <span className="w-2 h-2 rounded-full bg-white/20" />
+          </div>
+        </div>
       </header>
 
-      <main className="max-w-2xl mx-auto px-4 py-10">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2 text-center">Let's start with your photo</h1>
-        <p className="text-gray-500 text-center mb-8">
+      <main className="relative z-10 max-w-2xl mx-auto px-4 py-12">
+        <h1
+          style={{ fontFamily: "'Anton', sans-serif" }}
+          className="text-3xl sm:text-5xl uppercase tracking-tight text-white mb-3 text-center"
+        >
+          Let's start with your photo
+        </h1>
+        <p className="text-white/70 text-center mb-10 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
           Use a clear, well-lit <strong>full-body photo</strong> — head to at least your hips visible — so we can
-          analyze your face shape, skin tone, and body shape together. Face detection runs entirely in your browser;
-          your photo is never uploaded at this stage.
+          analyze your face shape, skin tone, hairstyle length, and full-body structure to recommend the best dress
+          style for you and highlight the colours to avoid.
         </p>
 
         {/* Upload / Camera controls (shown when idle or error) */}
         {(mode === MODES.IDLE || mode === MODES.ERROR) && !showCamera && (
-          <div className="flex flex-col items-center gap-4">
+          <div className="flex flex-col items-center gap-5">
             <div
               onClick={() => fileInputRef.current?.click()}
-              className="w-full border-2 border-dashed border-purple-300 rounded-2xl p-12 text-center cursor-pointer hover:border-purple-500 hover:bg-purple-50 transition-all"
+              className="w-full border-2 border-dashed border-white/20 bg-white/[0.03] backdrop-blur-md rounded-3xl p-12 text-center cursor-pointer hover:border-[#F4845F] hover:bg-white/[0.06] transition-all group flex flex-col items-center justify-center"
             >
-              <div className="text-5xl mb-3">📁</div>
-              <p className="text-gray-700 font-medium">Click to upload a photo</p>
-              <p className="text-gray-400 text-sm mt-1">JPG, PNG, WEBP — max 10 MB</p>
+              <UploadCloud size={44} className="text-[#F4845F] mb-4 group-hover:scale-110 transition-transform" />
+              <p className="text-white font-semibold text-lg">Click to upload a photo</p>
+              <p className="text-white/50 text-xs sm:text-sm mt-1 uppercase tracking-wider">JPG, PNG, WEBP — max 10 MB</p>
               {!modelReady && (
-                <p className="text-purple-400 text-xs mt-3 flex items-center justify-center gap-1.5">
-                  <span className="inline-block w-3 h-3 border-2 border-purple-300 border-t-purple-500 rounded-full animate-spin" />
+                <p className="text-[#6EB5FF] text-xs mt-4 flex items-center justify-center gap-2">
+                  <span className="inline-block w-3 h-3 border-2 border-white/30 border-t-[#6EB5FF] rounded-full animate-spin" />
                   Loading face detection model…
                 </p>
               )}
               {modelReady && (
-                <p className="text-green-500 text-xs mt-3">Face detection model ready</p>
+                <p className="text-[#6BBF7A] text-xs mt-4 font-semibold tracking-wide">Face detection model ready</p>
               )}
             </div>
             <input ref={fileInputRef} type="file" accept="image/*" className="hidden" onChange={handleFileChange} />
 
-            <div className="flex items-center gap-3 w-full">
-              <div className="flex-1 h-px bg-gray-200" />
-              <span className="text-gray-400 text-sm">or</span>
-              <div className="flex-1 h-px bg-gray-200" />
+            <div className="flex items-center gap-3 w-full my-1">
+              <div className="flex-1 h-px bg-white/10" />
+              <span className="text-white/40 text-xs uppercase tracking-widest">or</span>
+              <div className="flex-1 h-px bg-white/10" />
             </div>
 
             <button
               onClick={startCamera}
-              className="w-full flex items-center justify-center gap-2 bg-white border border-purple-300 text-purple-700 font-medium py-3 px-6 rounded-xl hover:bg-purple-50 transition-colors cursor-pointer"
+              className="w-full flex items-center justify-center gap-2 bg-white/10 border border-white/20 text-white font-semibold py-3.5 px-6 rounded-full hover:bg-white/15 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
             >
-              <span>📷</span> Use Camera
+              <Camera size={18} />
+              <span>Use Camera</span>
             </button>
 
             {mode === MODES.ERROR && (
-              <div className="w-full bg-red-50 border border-red-200 rounded-xl p-4 text-red-700 text-sm">
+              <div className="w-full bg-red-500/10 border border-red-500/30 rounded-2xl p-4 text-red-300 text-sm">
                 <strong>Oops:</strong> {errorMsg}
               </div>
             )}
@@ -185,20 +239,22 @@ export default function UploadPage({ onNext }) {
 
         {/* Camera live view */}
         {showCamera && (
-          <div className="flex flex-col items-center gap-4">
-            <div className="relative rounded-2xl overflow-hidden shadow-lg bg-black w-full max-w-md">
+          <div className="flex flex-col items-center gap-5">
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-black border border-white/20 w-full max-w-md">
               <video ref={videoRef} autoPlay playsInline muted className="w-full" />
             </div>
             <div className="flex gap-3">
               <button
                 onClick={capturePhoto}
-                className="bg-purple-600 text-white font-semibold px-8 py-3 rounded-xl hover:bg-purple-700 transition-colors cursor-pointer"
+                style={{ fontFamily: "'Anton', sans-serif" }}
+                className="bg-[#F4845F] text-white uppercase tracking-wider px-8 py-3.5 rounded-full hover:scale-105 active:scale-95 transition-all cursor-pointer shadow-lg flex items-center gap-2"
               >
-                📸 Capture Photo
+                <Camera size={18} />
+                <span>Capture Photo</span>
               </button>
               <button
                 onClick={() => { stopCamera(); setMode(MODES.IDLE) }}
-                className="bg-white border border-gray-300 text-gray-600 px-6 py-3 rounded-xl hover:bg-gray-50 transition-colors cursor-pointer"
+                className="bg-white/10 border border-white/20 text-white px-6 py-3.5 rounded-full hover:bg-white/15 transition-colors cursor-pointer"
               >
                 Cancel
               </button>
@@ -208,10 +264,10 @@ export default function UploadPage({ onNext }) {
 
         {/* Detecting spinner */}
         {mode === MODES.DETECTING && (
-          <div className="flex flex-col items-center gap-4 py-8">
-            <div className="w-12 h-12 border-4 border-purple-200 border-t-purple-600 rounded-full animate-spin" />
-            <p className="text-gray-600 font-medium">Detecting facial landmarks…</p>
-            <p className="text-gray-400 text-sm text-center max-w-xs">
+          <div className="flex flex-col items-center gap-4 py-12">
+            <div className="w-12 h-12 border-4 border-white/20 border-t-[#F4845F] rounded-full animate-spin" />
+            <p className="text-white font-medium">Detecting facial landmarks…</p>
+            <p className="text-white/50 text-sm text-center max-w-xs">
               {modelReady
                 ? 'Running face detection — this takes a few seconds'
                 : 'Loading face detection model (~15 s on first run), then detecting…'}
@@ -222,32 +278,34 @@ export default function UploadPage({ onNext }) {
         {/* Result: preview + landmark overlay */}
         {(mode === MODES.DONE || (mode === MODES.ERROR && imageSrc)) && imageSrc && (
           <div className="flex flex-col items-center gap-6">
-            <div className="relative inline-block rounded-2xl overflow-hidden shadow-xl">
+            <div className="relative inline-block rounded-3xl overflow-hidden shadow-2xl border border-white/20 bg-black">
               <LandmarkCanvas imageSrc={imageSrc} landmarks={landmarks} />
             </div>
 
             {mode === MODES.DONE && (
               <>
-                <div className="bg-green-50 border border-green-200 rounded-xl px-5 py-3 text-green-700 text-sm font-medium">
-                  ✅ {landmarks?.length} facial landmarks detected successfully
+                <div className="bg-[#6BBF7A]/15 border border-[#6BBF7A]/30 rounded-full px-6 py-3 text-[#6BBF7A] text-sm font-semibold tracking-wide flex items-center gap-2">
+                  <CheckCircle2 size={16} className="text-[#6BBF7A]" />
+                  <span>{landmarks?.length} facial landmarks detected successfully</span>
                 </div>
                 {closeUpWarning && (
-                  <div className="w-full bg-amber-50 border border-amber-200 rounded-xl p-4 text-amber-800 text-sm">
+                  <div className="w-full bg-amber-500/10 border border-amber-500/30 rounded-2xl p-4 text-amber-200 text-sm">
                     <strong>Heads up:</strong> this looks like a close-up photo. Body shape analysis in the next step
                     needs your shoulders, waist, and hips visible — for best results, go back and upload a full-body
                     photo instead.
                   </div>
                 )}
-                <div className="flex gap-3">
+                <div className="flex gap-4">
                   <button
                     onClick={reset}
-                    className="bg-white border border-gray-300 text-gray-600 px-6 py-3 rounded-xl hover:bg-gray-50 transition-colors cursor-pointer"
+                    className="bg-white/10 border border-white/20 text-white px-6 py-3.5 rounded-full hover:bg-white/15 transition-colors cursor-pointer"
                   >
                     Try another photo
                   </button>
                   <button
                     onClick={() => onNext({ imageSrc, landmarks })}
-                    className="bg-gradient-to-r from-purple-600 to-pink-500 text-white font-semibold px-8 py-3 rounded-xl hover:shadow-lg hover:scale-105 transition-all cursor-pointer"
+                    style={{ fontFamily: "'Anton', sans-serif" }}
+                    className="bg-white text-black uppercase tracking-wider px-8 py-3.5 rounded-full hover:scale-105 active:scale-95 transition-all shadow-xl cursor-pointer"
                   >
                     Continue →
                   </button>
@@ -256,13 +314,14 @@ export default function UploadPage({ onNext }) {
             )}
 
             {mode === MODES.ERROR && (
-              <div className="flex flex-col items-center gap-3 w-full">
-                <div className="w-full bg-red-50 border border-red-200 rounded-xl p-4 text-red-700 text-sm">
+              <div className="flex flex-col items-center gap-4 w-full">
+                <div className="w-full bg-red-500/10 border border-red-500/30 rounded-2xl p-4 text-red-300 text-sm">
                   <strong>No face detected.</strong> {errorMsg}
                 </div>
                 <button
                   onClick={reset}
-                  className="bg-purple-600 text-white font-semibold px-8 py-3 rounded-xl hover:bg-purple-700 transition-colors cursor-pointer"
+                  style={{ fontFamily: "'Anton', sans-serif" }}
+                  className="bg-[#F4845F] text-white uppercase tracking-wider px-8 py-3.5 rounded-full hover:scale-105 transition-all cursor-pointer"
                 >
                   Try Again
                 </button>

@@ -20,7 +20,7 @@ def _get_model(system_prompt: str):
 
 
 def _build_system_prompt(context: dict) -> str:
-    face_shape = context.get("face_shape", "")
+    face_shape = context.get("faceShape", "")
     season = context.get("season", "")
     undertone = context.get("undertone", "")
     depth = context.get("depth", "")
@@ -29,6 +29,7 @@ def _build_system_prompt(context: dict) -> str:
     body_type = context.get("bodyType", "")
     gender_group = context.get("genderGroup", "")
     person_category = context.get("personCategory", "")
+    hair_length = context.get("hairLength", "")
 
     profile_lines = []
     if person_category:
@@ -39,6 +40,8 @@ def _build_system_prompt(context: dict) -> str:
         profile_lines.append(f"- Body type: {body_type.replace('_', ' ')}")
     if face_shape:
         profile_lines.append(f"- Face shape: {face_shape}")
+    if hair_length and hair_length != "unknown":
+        profile_lines.append(f"- Hair length: {hair_length}")
     if season:
         profile_lines.append(f"- Color season: {season} ({undertone} undertone, {depth} depth)")
     if occasion:

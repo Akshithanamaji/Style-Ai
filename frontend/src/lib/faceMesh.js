@@ -46,6 +46,16 @@ export function prewarmFaceLandmarker() {
   return getFaceLandmarker()
 }
 
+// Fraction of the image height (from the top) to retry detection against when
+// the full frame fails. MediaPipe's short-range face detector is tuned for
+// close-up/selfie framing and often misses faces that are small relative to
+// the frame — exactly what happens with the full-body "head to hips" photos
+// this app asks for, since the face only occupies the top slice of the image.
+// Cropping to that slice and upscaling it raises the face's effective size
+// enough for the same model to find it, without needing a different model.
+const RETRY_CROP_HEIGHT_FRACTION = 0.45
+const RETRY_UPSCALE = 1.5
+
 export async function detectLandmarks(dataUrl) {
   const landmarker = await getFaceLandmarker()
 
@@ -58,8 +68,30 @@ export async function detectLandmarks(dataUrl) {
   })
 
   const result = landmarker.detect(img)
-  if (!result.faceLandmarks || result.faceLandmarks.length === 0) return null
+  if (result.faceLandmarks && result.faceLandmarks.length > 0) {
+    return result.faceLandmarks[0]
+  }
 
-  // Return the first face's 468 landmarks (normalized 0–1 coordinates)
-  return result.faceLandmarks[0]
+  // Full-frame detection found nothing — retry against an upscaled crop of
+  // just the top portion, which is where the face will be in a full-body photo.
+  const cropHeight = img.naturalHeight * RETRY_CROP_HEIGHT_FRACTION
+  const canvas = document.createElement('canvas')
+  canvas.width = img.naturalWidth * RETRY_UPSCALE
+  canvas.height = cropHeight * RETRY_UPSCALE
+  canvas.getContext('2d').drawImage(
+    img, 0, 0, img.naturalWidth, cropHeight,
+    0, 0, canvas.width, canvas.height
+  )
+
+  const cropResult = landmarker.detect(canvas)
+  if (!cropResult.faceLandmarks || cropResult.faceLandmarks.length === 0) return null
+
+  // Landmarks are normalized (0–1) relative to the crop — remap the y axis
+  // back to the full image's coordinate space so downstream code (skin tone
+  // sampling, the landmark overlay, face-shape classification) still lines
+  // up with the original photo. x is unchanged since the crop is full-width.
+  return cropResult.faceLandmarks[0].map((lm) => ({
+    ...lm,
+    y: lm.y * RETRY_CROP_HEIGHT_FRACTION,
+  }))
 }

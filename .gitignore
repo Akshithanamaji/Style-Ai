@@ -7,6 +7,7 @@ venv/
 *.egg-info/
 dist/
 build/
+data/app.db
 
 # Node
 node_modules/
@@ -22,3 +23,7 @@ Thumbs.db
 .vscode/
 .idea/
 *.swp
+
+# Logs and scratch
+*.log
+.playwright-mcp/

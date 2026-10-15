@@ -1,9 +1,10 @@
 import { useState, useRef, useEffect } from 'react'
+import { MessageSquare } from 'lucide-react'
 
 export default function ChatPanel({ context }) {
   const welcome = context.season && context.faceShape
-    ? `Hi! I'm your personal stylist 👋 I know your profile — ${context.faceShape} face shape, ${context.season} color season. Ask me anything about what to wear or colors that suit you!`
-    : `Hi! I'm your personal stylist 👋 Feel free to ask general fashion questions while you complete your analysis!`
+    ? `Hi! I'm your personal stylist. I know your profile — ${context.faceShape} face shape, ${context.season} color season. Ask me anything about what to wear or colors that suit you!`
+    : `Hi! I'm your personal stylist. Feel free to ask general fashion questions while you complete your analysis!`
 
   const [messages, setMessages] = useState([{ role: 'assistant', text: welcome }])
   const [input, setInput] = useState('')
@@ -59,10 +60,16 @@ export default function ChatPanel({ context }) {
   }
 
   return (
-    <div className="flex flex-col h-full">
-      <div className="px-4 py-3 border-b border-purple-100 bg-purple-50">
-        <h3 className="font-semibold text-purple-800 text-sm">💬 Chat with Your Stylist</h3>
-        <p className="text-xs text-purple-500 mt-0.5">Powered by Gemini AI</p>
+    <div className="flex flex-col h-full bg-[#14151B] text-white" style={{ fontFamily: "'Inter', sans-serif" }}>
+      <div className="px-5 py-4 border-b border-white/10 bg-white/[0.04] backdrop-blur-md">
+        <h3
+          style={{ fontFamily: "'Anton', sans-serif" }}
+          className="uppercase tracking-wider text-white text-sm flex items-center gap-2"
+        >
+          <MessageSquare size={16} className="text-[#F4845F]" />
+          <span>Chat with Your Stylist</span>
+        </h3>
+        <p className="text-[10px] text-white/50 uppercase tracking-widest mt-0.5 font-medium">Powered by Gemini AI</p>
       </div>
 
       {/* Message list */}
@@ -70,10 +77,10 @@ export default function ChatPanel({ context }) {
         {messages.map((msg, i) => (
           <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
             <div
-              className={`max-w-[85%] px-3 py-2 rounded-2xl text-sm leading-relaxed whitespace-pre-wrap ${
+              className={`max-w-[85%] px-4 py-2.5 rounded-2xl text-sm leading-relaxed whitespace-pre-wrap ${
                 msg.role === 'user'
-                  ? 'bg-purple-600 text-white rounded-br-md'
-                  : 'bg-gray-100 text-gray-800 rounded-bl-md'
+                  ? 'bg-[#F4845F] text-white rounded-br-sm shadow-md'
+                  : 'bg-white/10 text-white/90 rounded-bl-sm border border-white/10 backdrop-blur-sm'
               }`}
             >
               {msg.text}
@@ -82,17 +89,17 @@ export default function ChatPanel({ context }) {
         ))}
         {loading && (
           <div className="flex justify-start">
-            <div className="bg-gray-100 px-3 py-2 rounded-2xl rounded-bl-md">
-              <div className="flex gap-1 items-center h-4">
-                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+            <div className="bg-white/10 px-4 py-2.5 rounded-2xl rounded-bl-sm border border-white/10">
+              <div className="flex gap-1.5 items-center h-4">
+                <div className="w-2 h-2 bg-white/70 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                <div className="w-2 h-2 bg-white/70 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                <div className="w-2 h-2 bg-white/70 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
               </div>
             </div>
           </div>
         )}
         {error && (
-          <div className="text-xs text-red-500 text-center bg-red-50 rounded-lg px-3 py-2">
+          <div className="text-xs text-red-300 text-center bg-red-500/10 border border-red-500/30 rounded-xl px-3 py-2">
             {error.includes('API_KEY') || error.includes('not set')
               ? '⚠️ GEMINI_API_KEY not configured — add it to .env'
               : `Error: ${error}`}
@@ -102,25 +109,26 @@ export default function ChatPanel({ context }) {
       </div>
 
       {/* Input */}
-      <div className="px-4 py-3 border-t border-gray-100">
-        <div className="flex gap-2">
+      <div className="px-4 py-3.5 border-t border-white/10 bg-white/[0.02]">
+        <div className="flex gap-2.5">
           <textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKey}
             placeholder="Ask me anything… e.g. 'something more formal'"
             rows={2}
-            className="flex-1 resize-none border border-gray-200 rounded-xl px-3 py-2 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-300 bg-gray-50"
+            className="flex-1 resize-none border border-white/20 rounded-2xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-[#F4845F] bg-white/[0.05]"
           />
           <button
             onClick={send}
             disabled={loading || !input.trim()}
-            className="bg-purple-600 text-white px-4 py-2 rounded-xl text-sm font-medium hover:bg-purple-700 disabled:opacity-40 disabled:cursor-not-allowed transition-colors cursor-pointer self-end"
+            style={{ fontFamily: "'Anton', sans-serif" }}
+            className="bg-white text-black px-4 py-2 rounded-2xl text-xs uppercase tracking-wider font-bold hover:scale-105 active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed transition-all cursor-pointer self-end shadow-md"
           >
             Send
           </button>
         </div>
-        <p className="text-xs text-gray-400 mt-1">Enter to send · Shift+Enter for new line</p>
+        <p className="text-[10px] text-white/40 mt-1.5 uppercase tracking-wider">Enter to send · Shift+Enter for new line</p>
       </div>
     </div>
   )

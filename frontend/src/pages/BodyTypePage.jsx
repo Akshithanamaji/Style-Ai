@@ -62,6 +62,11 @@ const MEN_TYPES = [
   },
 ]
 
+const CHILD_TYPES = [
+  { id: 'girl', label: 'Girl', icon: '👧', desc: "Girls' styles & fits" },
+  { id: 'boy', label: 'Boy', icon: '👦', desc: "Boys' styles & fits" },
+]
+
 const BODY_TYPE_MAP = {
   adult_woman: WOMEN_TYPES, teen_girl: WOMEN_TYPES,
   adult_man: MEN_TYPES, teen_boy: MEN_TYPES,
@@ -79,6 +84,13 @@ const PERSON_ICONS = {
   teen_girl: '👧', teen_boy: '👦',
   child: '🧒', senior_woman: '👵', senior_man: '👴',
 }
+
+const HAIR_LENGTHS = [
+  { id: 'short', label: 'Short', icon: '💇' },
+  { id: 'medium', label: 'Medium', icon: '👩‍🦰' },
+  { id: 'long', label: 'Long', icon: '👱‍♀️' },
+  { id: 'bald', label: 'Bald', icon: '👨‍🦲' },
+]
 
 function BodySilhouette({ shape, color = '#a855f7', size = 100 }) {
   const vbW = 100, vbH = 130
@@ -100,6 +112,7 @@ export default function BodyTypePage({ imageSrc, onNext }) {
   const [error, setError] = useState('')
   const [selectedPersonCat, setSelectedPersonCat] = useState(null)
   const [selectedBodyType, setSelectedBodyType] = useState(null)
+  const [selectedHairLength, setSelectedHairLength] = useState(null)
 
   useEffect(() => {
     analyzeBody()
@@ -119,9 +132,10 @@ export default function BodyTypePage({ imageSrc, onNext }) {
       setAnalysis(data)
       setSelectedPersonCat(data.person_category)
       setSelectedBodyType(data.body_type !== 'unknown' ? data.body_type : null)
+      setSelectedHairLength(data.hair_length && data.hair_length !== 'unknown' ? data.hair_length : null)
     } catch (e) {
       setError('Body analysis failed: ' + e.message)
-      setAnalysis({ person_category: 'adult_woman', gender_group: 'women', body_type: 'unknown', confidence: 'low', description: '' })
+      setAnalysis({ person_category: 'adult_woman', gender_group: 'women', body_type: 'unknown', confidence: 'low', description: '', hair_length: 'unknown' })
       setSelectedPersonCat('adult_woman')
     } finally {
       setLoading(false)
@@ -139,31 +153,72 @@ export default function BodyTypePage({ imageSrc, onNext }) {
     return 'men'
   }
 
-  const effectiveBodyType = (isChild || isSenior)
-    ? (isChild ? 'child' : 'comfortable')
-    : (selectedBodyType || 'rectangle')
+  const effectiveBodyType = isSenior
+    ? 'comfortable'
+    : (selectedBodyType || (isChild ? null : 'rectangle'))
 
-  const canContinue = selectedPersonCat && (isChild || isSenior || selectedBodyType)
+  const canContinue = selectedPersonCat && (isSenior || selectedBodyType) && selectedHairLength
+
+  const GRAIN_URI =
+    `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E` +
+    `%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E` +
+    `%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E` +
+    `%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E")`
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-rose-50">
-      <header className="flex items-center gap-3 px-6 py-4 bg-white/70 backdrop-blur-sm border-b border-purple-100">
-        <span className="text-xl">✨</span>
-        <span className="font-semibold text-purple-800">AI Fashion Stylist</span>
-        <span className="ml-2 text-sm text-gray-400">Step 2 of 5 — Body Analysis</span>
+    <div className="min-h-screen bg-[#111216] text-white relative overflow-hidden" style={{ fontFamily: "'Inter', sans-serif" }}>
+      {/* Grain overlay */}
+      <div
+        aria-hidden="true"
+        className="fixed inset-0 pointer-events-none z-50"
+        style={{
+          backgroundImage: GRAIN_URI,
+          backgroundSize: '200px 200px',
+          backgroundRepeat: 'repeat',
+          opacity: 0.35,
+        }}
+      />
+
+      {/* Header */}
+      <header className="relative z-20 flex items-center justify-between px-6 py-4 bg-[#14151B]/80 backdrop-blur-md border-b border-white/10">
+        <div className="flex items-center gap-3">
+          <span className="text-xl">✨</span>
+          <span
+            style={{ fontFamily: "'Anton', sans-serif" }}
+            className="text-lg tracking-wider uppercase text-white"
+          >
+            AI Fashion Stylist
+          </span>
+        </div>
+        <div className="flex items-center gap-3">
+          <span className="text-xs tracking-wider uppercase text-white/50 font-medium">Step 2 of 5 — Body Analysis</span>
+          {/* Pill step indicator */}
+          <div className="flex items-center gap-1.5">
+            <span className="w-2 h-2 rounded-full bg-[#6BBF7A]" />
+            <span className="w-5 h-2 rounded-full bg-[#6BBF7A]" />
+            <span className="w-2 h-2 rounded-full bg-white/20" />
+            <span className="w-2 h-2 rounded-full bg-white/20" />
+            <span className="w-2 h-2 rounded-full bg-white/20" />
+          </div>
+        </div>
       </header>
 
-      <main className="max-w-4xl mx-auto px-4 py-10">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2 text-center">Body Structure Analysis</h1>
-        <p className="text-gray-500 text-center mb-8 max-w-xl mx-auto">
+      <main className="relative z-10 max-w-4xl mx-auto px-4 py-12">
+        <h1
+          style={{ fontFamily: "'Anton', sans-serif" }}
+          className="text-3xl sm:text-5xl uppercase tracking-tight text-white mb-3 text-center"
+        >
+          Body Structure Analysis
+        </h1>
+        <p className="text-white/70 text-center mb-10 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
           We analyze your body proportions to recommend the most flattering dress styles for you.
         </p>
 
         {loading && (
           <div className="flex flex-col items-center gap-4 py-12">
-            <div className="w-12 h-12 border-4 border-purple-200 border-t-purple-600 rounded-full animate-spin" />
-            <p className="text-gray-500 font-medium">Analyzing body structure with AI…</p>
-            <p className="text-gray-400 text-sm">This takes a few seconds</p>
+            <div className="w-12 h-12 border-4 border-white/20 border-t-[#6BBF7A] rounded-full animate-spin" />
+            <p className="text-white font-medium">Analyzing body structure with AI…</p>
+            <p className="text-white/50 text-sm">This takes a few seconds</p>
           </div>
         )}
 
@@ -171,28 +226,34 @@ export default function BodyTypePage({ imageSrc, onNext }) {
           <div className="flex flex-col gap-6">
             {/* AI Detection Result */}
             {analysis && (
-              <div className="bg-white rounded-2xl p-5 shadow-sm border border-purple-100">
-                <p className="text-sm text-gray-400 mb-3">AI detected</p>
+              <div className="bg-white/[0.04] backdrop-blur-md rounded-3xl p-6 border border-white/10">
+                <p className="text-xs tracking-wider uppercase text-white/50 mb-3">AI detected</p>
                 <div className="flex flex-wrap gap-4 items-center">
-                  <div className="flex items-center gap-2">
-                    <span className="text-3xl">{PERSON_ICONS[analysis.person_category]}</span>
+                  <div className="flex items-center gap-3">
+                    <span className="text-4xl p-2 rounded-2xl bg-white/10">{PERSON_ICONS[analysis.person_category]}</span>
                     <div>
-                      <p className="font-bold text-gray-800">{PERSON_LABELS[analysis.person_category]}</p>
-                      <p className="text-xs text-gray-400">Person type</p>
+                      <p className="font-bold text-white text-base">{PERSON_LABELS[analysis.person_category]}</p>
+                      <p className="text-xs text-white/50 uppercase tracking-wider">Person type</p>
                     </div>
                   </div>
                   {analysis.body_type && analysis.body_type !== 'unknown' && (
-                    <div>
-                      <p className="font-semibold text-purple-700 capitalize">{analysis.body_type.replace('_', ' ')}</p>
-                      <p className="text-xs text-gray-400">Body type • {analysis.confidence} confidence</p>
+                    <div className="pl-4 border-l border-white/10">
+                      <p className="font-semibold text-[#6BBF7A] capitalize text-base">{analysis.body_type.replace('_', ' ')}</p>
+                      <p className="text-xs text-white/50">Body type • {analysis.confidence} confidence</p>
+                    </div>
+                  )}
+                  {analysis.hair_length && analysis.hair_length !== 'unknown' && (
+                    <div className="pl-4 border-l border-white/10">
+                      <p className="font-semibold text-[#6BBF7A] capitalize text-base">{analysis.hair_length}</p>
+                      <p className="text-xs text-white/50">Hair length</p>
                     </div>
                   )}
                   {analysis.description && (
-                    <p className="text-sm text-gray-500 flex-1 min-w-40">{analysis.description}</p>
+                    <p className="text-sm text-white/70 flex-1 min-w-40">{analysis.description}</p>
                   )}
                 </div>
                 {analysis.confidence === 'low' && (
-                  <p className="text-xs text-amber-600 mt-2 bg-amber-50 rounded-lg px-3 py-2">
+                  <p className="text-xs text-amber-300 mt-4 bg-amber-500/10 border border-amber-500/30 rounded-xl px-4 py-2.5">
                     ⚠️ Low confidence — please confirm your details below. For best results, use a full-body photo.
                   </p>
                 )}
@@ -200,14 +261,14 @@ export default function BodyTypePage({ imageSrc, onNext }) {
             )}
 
             {error && (
-              <div className="bg-red-50 border border-red-200 rounded-xl p-4 text-red-700 text-sm">
+              <div className="bg-red-500/10 border border-red-500/30 rounded-2xl p-4 text-red-300 text-sm">
                 <strong>Note:</strong> {error} — Please select manually below.
               </div>
             )}
 
             {/* Person Type Selector */}
-            <div className="bg-white rounded-2xl p-5 shadow-sm border border-purple-100">
-              <h2 className="font-semibold text-gray-800 mb-3">Who is in the photo?</h2>
+            <div className="bg-white/[0.04] backdrop-blur-md rounded-3xl p-6 border border-white/10">
+              <h2 className="font-bold text-white text-lg mb-4">Who is in the photo?</h2>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                 {[
                   { id: 'adult_woman', label: 'Woman', icon: '👩' },
@@ -221,10 +282,10 @@ export default function BodyTypePage({ imageSrc, onNext }) {
                   <button
                     key={id}
                     onClick={() => { setSelectedPersonCat(id); setSelectedBodyType(null) }}
-                    className={`flex items-center gap-2 px-3 py-2.5 rounded-xl border-2 transition-all cursor-pointer text-left ${
+                    className={`flex items-center gap-2.5 px-4 py-3 rounded-2xl border transition-all cursor-pointer text-left ${
                       selectedPersonCat === id
-                        ? 'border-purple-500 bg-purple-50 text-purple-700'
-                        : 'border-gray-200 bg-white text-gray-600 hover:border-purple-300'
+                        ? 'border-[#6BBF7A] bg-[#6BBF7A]/15 text-[#6BBF7A] font-semibold'
+                        : 'border-white/10 bg-white/[0.02] text-white/70 hover:border-white/30 hover:bg-white/[0.06]'
                     }`}
                   >
                     <span className="text-xl">{icon}</span>
@@ -234,32 +295,28 @@ export default function BodyTypePage({ imageSrc, onNext }) {
               </div>
             </div>
 
-            {/* Body Type Selector — skip for children & seniors */}
-            {selectedPersonCat && !isChild && !isSenior && personTypes && (
-              <div className="bg-white rounded-2xl p-5 shadow-sm border border-purple-100">
-                <h2 className="font-semibold text-gray-800 mb-1">Select your body type</h2>
-                <p className="text-sm text-gray-400 mb-4">Choose the shape that best matches your proportions</p>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-                  {personTypes.map((bt) => (
+            {/* Boy/Girl Selector — children only */}
+            {selectedPersonCat && isChild && (
+              <div className="bg-white/[0.04] backdrop-blur-md rounded-3xl p-6 border border-white/10">
+                <h2 className="font-bold text-white text-lg mb-1">Is this a boy or girl?</h2>
+                <p className="text-xs text-white/50 uppercase tracking-wider mb-5">Used to tailor dress style recommendations</p>
+                <div className="grid grid-cols-2 gap-4">
+                  {CHILD_TYPES.map((ct) => (
                     <button
-                      key={bt.id}
-                      onClick={() => setSelectedBodyType(bt.id)}
-                      className={`flex flex-col items-center gap-2 p-4 rounded-2xl border-2 transition-all cursor-pointer ${
-                        selectedBodyType === bt.id
-                          ? 'border-purple-500 bg-purple-50'
-                          : 'border-gray-200 bg-gray-50 hover:border-purple-300 hover:bg-purple-50/40'
+                      key={ct.id}
+                      onClick={() => setSelectedBodyType(ct.id)}
+                      className={`flex items-center gap-3 p-4 rounded-2xl border transition-all cursor-pointer ${
+                        selectedBodyType === ct.id
+                          ? 'border-[#6BBF7A] bg-[#6BBF7A]/15 shadow-lg shadow-[#6BBF7A]/10'
+                          : 'border-white/10 bg-white/[0.02] hover:border-white/30 hover:bg-white/[0.05]'
                       }`}
                     >
-                      <BodySilhouette
-                        shape={bt.svgShape}
-                        color={selectedBodyType === bt.id ? '#9333ea' : '#c4b5fd'}
-                        size={80}
-                      />
-                      <div className="text-center">
-                        <p className={`text-sm font-semibold ${selectedBodyType === bt.id ? 'text-purple-700' : 'text-gray-700'}`}>
-                          {bt.label}
+                      <span className="text-3xl">{ct.icon}</span>
+                      <div className="text-left">
+                        <p className={`text-sm font-semibold ${selectedBodyType === ct.id ? 'text-[#6BBF7A]' : 'text-white'}`}>
+                          {ct.label}
                         </p>
-                        <p className="text-xs text-gray-400 mt-0.5 leading-tight">{bt.desc}</p>
+                        <p className="text-xs text-white/50 mt-0.5">{ct.desc}</p>
                       </div>
                     </button>
                   ))}
@@ -267,25 +324,80 @@ export default function BodyTypePage({ imageSrc, onNext }) {
               </div>
             )}
 
-            {/* Auto-assigned for children/seniors */}
-            {selectedPersonCat && (isChild || isSenior) && (
-              <div className="bg-purple-50 rounded-2xl p-4 border border-purple-100">
-                <p className="text-sm text-purple-700">
-                  {isChild
-                    ? '🧒 Recommendations will focus on age-appropriate, comfortable, and playful styles for children.'
-                    : '🌸 Recommendations will focus on elegant, comfortable, and easy-to-wear classic styles.'}
+            {/* Body Type Selector — skip for children & seniors */}
+            {selectedPersonCat && !isChild && !isSenior && personTypes && (
+              <div className="bg-white/[0.04] backdrop-blur-md rounded-3xl p-6 border border-white/10">
+                <h2 className="font-bold text-white text-lg mb-1">Select your body type</h2>
+                <p className="text-xs text-white/50 uppercase tracking-wider mb-5">Choose the shape that best matches your proportions</p>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+                  {personTypes.map((bt) => (
+                    <button
+                      key={bt.id}
+                      onClick={() => setSelectedBodyType(bt.id)}
+                      className={`flex flex-col items-center gap-3 p-4 rounded-2xl border transition-all cursor-pointer ${
+                        selectedBodyType === bt.id
+                          ? 'border-[#6BBF7A] bg-[#6BBF7A]/15 shadow-lg shadow-[#6BBF7A]/10'
+                          : 'border-white/10 bg-white/[0.02] hover:border-white/30 hover:bg-white/[0.05]'
+                      }`}
+                    >
+                      <BodySilhouette
+                        shape={bt.svgShape}
+                        color={selectedBodyType === bt.id ? '#6BBF7A' : '#ffffff80'}
+                        size={80}
+                      />
+                      <div className="text-center">
+                        <p className={`text-sm font-semibold ${selectedBodyType === bt.id ? 'text-[#6BBF7A]' : 'text-white'}`}>
+                          {bt.label}
+                        </p>
+                        <p className="text-xs text-white/50 mt-1 leading-tight">{bt.desc}</p>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Hair Length Selector */}
+            {selectedPersonCat && (
+              <div className="bg-white/[0.04] backdrop-blur-md rounded-3xl p-6 border border-white/10">
+                <h2 className="font-bold text-white text-lg mb-1">Select your hair length</h2>
+                <p className="text-xs text-white/50 uppercase tracking-wider mb-5">Used to tailor hairstyle tips for your face shape</p>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                  {HAIR_LENGTHS.map(({ id, label, icon }) => (
+                    <button
+                      key={id}
+                      onClick={() => setSelectedHairLength(id)}
+                      className={`flex items-center gap-2.5 px-4 py-3 rounded-2xl border transition-all cursor-pointer text-left ${
+                        selectedHairLength === id
+                          ? 'border-[#6BBF7A] bg-[#6BBF7A]/15 text-[#6BBF7A] font-semibold'
+                          : 'border-white/10 bg-white/[0.02] text-white/70 hover:border-white/30 hover:bg-white/[0.06]'
+                      }`}
+                    >
+                      <span className="text-xl">{icon}</span>
+                      <span className="text-sm font-medium">{label}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Auto-assigned for seniors */}
+            {selectedPersonCat && isSenior && (
+              <div className="bg-[#6BBF7A]/10 rounded-2xl p-5 border border-[#6BBF7A]/20">
+                <p className="text-sm text-[#6BBF7A]">
+                  🌸 Recommendations will focus on elegant, comfortable, and easy-to-wear classic styles.
                 </p>
               </div>
             )}
 
             {/* Your uploaded photo */}
             {imageSrc && (
-              <div className="bg-white rounded-2xl p-5 shadow-sm border border-purple-100">
-                <h2 className="font-semibold text-gray-800 mb-3">Your photo</h2>
+              <div className="bg-white/[0.04] backdrop-blur-md rounded-3xl p-6 border border-white/10 text-center">
+                <h2 className="font-bold text-white text-lg mb-4">Your photo</h2>
                 <img
                   src={imageSrc}
                   alt="Uploaded"
-                  className="max-w-xs mx-auto rounded-xl shadow-sm"
+                  className="max-w-xs mx-auto rounded-2xl shadow-xl border border-white/10"
                   style={{ maxHeight: '300px', objectFit: 'contain' }}
                 />
               </div>
@@ -297,11 +409,13 @@ export default function BodyTypePage({ imageSrc, onNext }) {
                 bodyType: effectiveBodyType,
                 personCategory: selectedPersonCat,
                 genderGroup: genderGroup(selectedPersonCat),
+                hairLength: selectedHairLength,
               })}
-              className={`w-full py-3 px-8 rounded-xl font-semibold text-white transition-all ${
+              style={{ fontFamily: "'Anton', sans-serif" }}
+              className={`w-full py-4 px-8 rounded-full uppercase tracking-wider text-lg transition-all ${
                 canContinue
-                  ? 'bg-gradient-to-r from-purple-600 to-pink-500 hover:shadow-lg hover:scale-105 cursor-pointer'
-                  : 'bg-gray-300 cursor-not-allowed'
+                  ? 'bg-white text-black hover:scale-[1.02] active:scale-[0.98] shadow-2xl cursor-pointer'
+                  : 'bg-white/20 text-white/40 cursor-not-allowed'
               }`}
             >
               {canContinue ? 'Continue to Face Shape →' : 'Select your details above to continue'}

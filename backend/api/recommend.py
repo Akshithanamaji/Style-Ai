@@ -17,7 +17,7 @@ class RecommendRequest(BaseModel):
 def recommend(req: RecommendRequest):
     allowed_shapes = {"oval", "round", "square", "heart", "diamond", "long"}
     allowed_seasons = {"Spring", "Summer", "Autumn", "Winter"}
-    allowed_occasions = {"daily", "office", "college", "party", "wedding", "festive", "formal", "casual", "work", ""}
+    allowed_occasions = {"daily", "office", "college", "party", "wedding", "festive", "formal", "night_wear", "functions", "casual", "work", ""}
     allowed_gender_groups = {"women", "men", "children", "seniors"}
 
     if req.face_shape not in allowed_shapes:

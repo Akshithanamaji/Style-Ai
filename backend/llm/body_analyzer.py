@@ -45,6 +45,7 @@ Determine:
 3. confidence: one of "high", "medium", "low"
 4. description: 1 sentence describing what you observed (body proportions, not face)
 5. face_shape_hint: brief note about visible face shape features if helpful (or empty string)
+6. hair_length: one of "short" (above chin), "medium" (chin to shoulders), "long" (past shoulders), "bald", or "unknown" if hair is not visible (e.g. covered, cropped out of frame)
 
 Rules:
 - Base body_type purely on visible body proportions (shoulders, waist, hips)
@@ -53,7 +54,7 @@ Rules:
 - Focus on clothing recommendations relevance, not physical judgement
 
 Respond with ONLY this JSON (no markdown code blocks):
-{"person_category": "...", "body_type": "...", "confidence": "...", "description": "...", "face_shape_hint": "..."}"""
+{"person_category": "...", "body_type": "...", "confidence": "...", "description": "...", "face_shape_hint": "...", "hair_length": "..."}"""
 
     try:
         response = model.generate_content([
@@ -78,6 +79,7 @@ def _normalize(result: dict) -> dict:
     valid_women_types = {"hourglass", "pear", "apple", "rectangle", "inverted_triangle"}
     valid_men_types = {"athletic", "rectangle", "oval"}
     valid_categories = {"adult_woman", "adult_man", "teen_girl", "teen_boy", "child", "senior_woman", "senior_man"}
+    valid_hair_lengths = {"short", "medium", "long", "bald", "unknown"}
 
     person_cat = result.get("person_category", "adult_woman")
     if person_cat not in valid_categories:
@@ -99,6 +101,10 @@ def _normalize(result: dict) -> dict:
     if gender_group == "seniors":
         body_type = "comfortable"
 
+    hair_length = result.get("hair_length", "unknown")
+    if hair_length not in valid_hair_lengths:
+        hair_length = "unknown"
+
     return {
         "person_category": person_cat,
         "gender_group": gender_group,
@@ -106,6 +112,7 @@ def _normalize(result: dict) -> dict:
         "confidence": result.get("confidence", "low"),
         "description": result.get("description", "Analysis complete."),
         "face_shape_hint": result.get("face_shape_hint", ""),
+        "hair_length": hair_length,
     }
 
 
@@ -117,4 +124,5 @@ def _fallback() -> dict:
         "confidence": "low",
         "description": "Could not analyze body type automatically. Please select manually.",
         "face_shape_hint": "",
+        "hair_length": "unknown",
     }
